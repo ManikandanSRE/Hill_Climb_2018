@@ -16,7 +16,7 @@ public class ClickToStart : MonoBehaviour {
     public void HiddenButtonClick()
     {
         Time.timeScale = 1;
-       CameraController. isalive = true;
+       //CameraController. isalive = true;
         StartCanvas.SetActive(false);
     }
 }

@@ -767,6 +767,8 @@ MonoBehaviour:
   RedRing: {fileID: 212591267451037426}
   FrontWheel: {fileID: 0}
   BackWheel: {fileID: 0}
+  ft: {fileID: 0}
+  bt: {fileID: 0}
   spritArray: []
 --- !u!114 &114589530907917572
 MonoBehaviour:
@@ -1029,7 +1031,7 @@ HingeJoint2D:
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: -7.190001, y: -6.4999995}
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000

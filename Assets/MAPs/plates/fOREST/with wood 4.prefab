@@ -256,6 +256,16 @@ PolygonCollider2D:
       - {x: -25.629492, y: -11.450928}
       - {x: -26.35, y: -11.450928}
       - {x: -26.35, y: -18.887598}
+      - {x: -26.914492, y: -24.457884}
+      - {x: -12.917234, y: -23.969612}
+      - {x: -4.4538136, y: -25.267159}
+      - {x: 0.039707083, y: -28.398905}
+      - {x: 0.7913964, y: -32.66245}
+      - {x: 3.0397303, y: -33.593838}
+      - {x: 6.8635607, y: -32.522137}
+      - {x: 13.088027, y: -29.410053}
+      - {x: 15.403732, y: -22.783363}
+      - {x: 18.499865, y: -24.124308}
       - {x: 26.35, y: -18.887598}
       - {x: 26.35, y: -11.502393}
       - {x: 26.324268, y: -11.476661}
@@ -352,6 +362,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -367,6 +378,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -394,6 +406,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -409,6 +422,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -436,6 +450,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -451,6 +466,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

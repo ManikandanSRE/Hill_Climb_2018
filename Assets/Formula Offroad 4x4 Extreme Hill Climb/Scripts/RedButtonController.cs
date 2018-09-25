@@ -37,8 +37,8 @@ public class RedButtonController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         boardManager = new ScoreBoardManager();
-        GreenBttonController.isGameover = false;
-
+        //GreenBttonController.isGameover = false;
+        
         ScoreBoardManager.GoldCoins = 0;
 
         red.onClick.AddListener(TaskOnClick);
@@ -110,14 +110,16 @@ public class RedButtonController : MonoBehaviour
             // InfoText.text = "GAME OVER!!!Don't press the button before";
             gameOverPanel.SetActive(true);
             boardManager.SetHighScore();
-            GreenBttonController.isGameover = true;
+            //GreenBttonController.isGameover = true;
+            gamemanager.gameState = gamemanager.GameState.Gameover;
 
         }
         else if (triggerdetection.CollusionStatus == "wrongButton")
         {
             gameOverPanel.SetActive(true);
             boardManager.SetHighScore();
-            GreenBttonController.isGameover = true;
+           // GreenBttonController.isGameover = true;
+            gamemanager.gameState = gamemanager.GameState.Gameover;
             //InfoText.text = "Game over! you pressing wrong button";
 
         }
@@ -125,7 +127,8 @@ public class RedButtonController : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
             boardManager.SetHighScore();
-            GreenBttonController.isGameover = true;
+           // GreenBttonController.isGameover = true;
+            gamemanager.gameState = gamemanager.GameState.Gameover;
             //InfoText.text = "Game over! you pressing wrong button";
 
         }

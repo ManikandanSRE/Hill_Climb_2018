@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class SceneLoader : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +14,10 @@ public class NewBehaviourScript : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+    public void OnSceneLoad(int SceneNumber)
+    {
+        SceneManager.LoadScene(SceneNumber);
+    }
 }

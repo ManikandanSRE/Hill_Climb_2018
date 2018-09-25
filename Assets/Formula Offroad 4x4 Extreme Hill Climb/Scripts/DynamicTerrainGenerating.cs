@@ -30,12 +30,16 @@ public class DynamicTerrainGenerating : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+
+        if (gamemanager.gameState == gamemanager.GameState.playing)
         {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
 
-            DynamicTerrainCreating();
+                DynamicTerrainCreating();
 
+            }
         }
     }
 
@@ -49,41 +53,6 @@ public class DynamicTerrainGenerating : MonoBehaviour
         
         timer = 0.5f;
         distance = 25.35f;
-       // DynamicPlateCreating(TerrainPathHandler.transform.position.x -8);
-
-    }
-
-
-    public void DynamicPlateCreating(float distancePlates)
-    {
-        distancePlates += Random.Range(1, 4);
-        Instantiate(PlatesArray[Random.Range(0, PlatesArray.Length)] as GameObject, new Vector2(distancePlates, obj.transform.position.y), Quaternion.identity);
-
-        distancePlates += Random.Range(2, 5);
-        Instantiate(PlatesArray[Random.Range(0, PlatesArray.Length)] as GameObject, new Vector2(distancePlates, obj.transform.position.y), Quaternion.identity);
-
-
-        distancePlates += Random.Range(2, 5);
-        Instantiate(PlatesArray[Random.Range(0, PlatesArray.Length)] as GameObject, new Vector2(distancePlates, obj.transform.position.y), Quaternion.identity);
-
-
-        //distancePlates += Random.Range(1, 4);
-        //Vector2 pos = new Vector2(distancePlates, obj.transform.position.y);
-        //pos.y = Terrain.
-        //    //activeTerrain.SampleHeight(transform.position);
-        //transform.position = pos;
-
-
-
-        //Instantiate(PlatesArray[Random.Range(0, PlatesArray.Length)] as GameObject, new Vector2(distancePlates, obj.transform.position.y), Quaternion.identity);
-        //distancePlates += Random.Range(2, 5);
-        //
-        //
-        //Instantiate(PlatesArray[Random.Range(0, PlatesArray.Length)] as GameObject, new Vector2(distancePlates, obj.transform.position.y), Quaternion.identity);
-        //distancePlates += Random.Range(2, 5);
-        //
-        //Instantiate(PlatesArray[Random.Range(0, PlatesArray.Length)] as GameObject, new Vector2(distancePlates, obj.transform.position.y), Quaternion.identity);
-        //distancePlates += Random.Range(2, 5);
 
     }
 }

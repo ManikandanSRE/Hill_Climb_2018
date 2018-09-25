@@ -12,4 +12,9 @@ public class GameModeAccessScript : MonoBehaviour {
         gamemanager.GameModeAccessSettingUp = mode;
         SceneManager.LoadScene(2);
     }
+
+    public void CarSpeedChanger(int carspeed)
+    {
+        gamemanager.carSpeed = carspeed;
+    }
 }

@@ -31,7 +31,6 @@ public class ScoreBoardManager : MonoBehaviour
     public GameObject ScoreText;
     Text ScoreValues;
 
-
     public GameObject HighScoreText;
     Text HighScorevalue;
 
@@ -40,9 +39,7 @@ public class ScoreBoardManager : MonoBehaviour
         HighScoreText = GameObject.Find("High Score Board");
 
         GoldGodown = PlayerPrefs.GetInt("Goldcoin_Godown");
-        // Debug.Log(GoldGodown);
 
-        // Debug.Log("awake get highscore " + GameController.GameModeAccess);
 
         if (GameController.GameModeAccess == "EASY")
         {
@@ -60,7 +57,7 @@ public class ScoreBoardManager : MonoBehaviour
         {
             highscore = PlayerPrefs.GetInt("HighScore_EXTREMEHARD", highscore);
         }
-        // Debug.Log("awake highscore " + highscore);
+     
         HighScorevalue = HighScoreText.GetComponent<Text>();
         HighScorevalue.text = "High Score : " + highscore.ToString();
         Score = 0;
@@ -77,75 +74,76 @@ public class ScoreBoardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (GameController.GameModeAccess == "EASY")
+        if (gamemanager.gameState == gamemanager.GameState.playing)
         {
-
-            if (Score != 0 && (Score % 25) == 0 && createCoin)
+            if (GameController.GameModeAccess == "EASY")
             {
 
-                GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
-                createCoin = false;
+                if (Score != 0 && (Score % 25) == 0 && createCoin)
+                {
+
+                    GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
+                    createCoin = false;
+
+                }
+                if ((Score % 25) == 5)
+                {
+                    createCoin = true;
+                }
 
             }
-            if ((Score % 25) == 5)
+
+            else if (GameController.GameModeAccess == "NORMAL")
             {
-                createCoin = true;
+
+                if (Score != 0 && (Score % 20) == 0 && createCoin)
+                {
+
+                    GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
+                    createCoin = false;
+
+                }
+                if ((Score % 20) == 5)
+                {
+                    createCoin = true;
+                }
+
             }
 
+            else if (GameController.GameModeAccess == "HARD")
+            {
+
+                if (Score != 0 && (Score % 15) == 0 && createCoin)
+                {
+
+                    GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
+                    createCoin = false;
+
+                }
+                if ((Score % 15) == 5)
+                {
+                    createCoin = true;
+                }
+
+            }
+
+            else if (GameController.GameModeAccess == "EXTREME HARD")
+            {
+
+                if (Score != 0 && (Score % 10) == 0 && createCoin)
+                {
+
+                    GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
+                    createCoin = false;
+
+                }
+                if ((Score % 10) == 5)
+                {
+                    createCoin = true;
+                }
+
+            }
         }
-
-        else if (GameController.GameModeAccess == "NORMAL")
-        {
-
-            if (Score != 0 && (Score % 20) == 0 && createCoin)
-            {
-
-                GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
-                createCoin = false;
-
-            }
-            if ((Score % 20) == 5)
-            {
-                createCoin = true;
-            }
-
-        }
-
-        else if (GameController.GameModeAccess == "HARD")
-        {
-
-            if (Score != 0 && (Score % 15) == 0 && createCoin)
-            {
-
-                GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
-                createCoin = false;
-
-            }
-            if ((Score % 15) == 5)
-            {
-                createCoin = true;
-            }
-
-        }
-
-        else if (GameController.GameModeAccess == "EXTREME HARD")
-        {
-
-            if (Score != 0 && (Score % 10) == 0 && createCoin)
-            {
-
-                GameObject Gb = Instantiate(RGCoins[Random.Range(0, RGCoins.Length)], InstatiatePlace.transform.position, Quaternion.identity) as GameObject;
-                createCoin = false;
-
-            }
-            if ((Score % 10) == 5)
-            {
-                createCoin = true;
-            }
-
-        }
-
 
 
 
@@ -213,13 +211,12 @@ public class ScoreBoardManager : MonoBehaviour
 
     public void SetHighScore()
     {
-        Debug.Log(gamemanager.ReloadValue);
+        
         ++gamemanager.ReloadValue;
 
         GoldGodown = GoldGodown + GoldCoins;
-        // GoldGodown += GoldCoins; 
 
-        Debug.Log("Game Over Current Score: " + Score + " High Score:" + highscore);
+        
         string[] ScoresArray;
         if (GameController.GameModeAccess == "EASY")
         {

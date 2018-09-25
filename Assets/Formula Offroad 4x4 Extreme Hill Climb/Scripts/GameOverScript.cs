@@ -15,7 +15,7 @@ public class GameOverScript : MonoBehaviour
     public Text BestScore;
     public Text GoldCoinBest;
 
-   // public static int finalGoldCoin;
+  
 
     InterstitialAd interstitial;
 
@@ -24,26 +24,24 @@ public class GameOverScript : MonoBehaviour
     void Start()
     {
 
+       
 
-
-       // ++gamemanager.ReloadValue;
-
-        //FinalScore.text = "Score : " + ScoreBoardManager.Score;
-        //BestScore.text = "Best : " + ScoreBoardManager.highscore;
-        //GoldCoinBest.text = "Your Gold : " + ScoreBoardManager.GoldCoins;
-        //finalGoldCoin = ScoreBoardManager.GoldCoins;       
+          
         RequestInterstitial();
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        FinalScore.text = "Score : " + ScoreBoardManager.Score;
-        BestScore.text = "Best : " + ScoreBoardManager.highscore;
-        GoldCoinBest.text = "Your Gold : " + ScoreBoardManager.GoldCoins;
-        //finalGoldCoin = ScoreBoardManager.GoldCoins;       
-        //RequestInterstitial();
+        if (gamemanager.gameState == gamemanager.GameState.Gameover)
+        {
+            FinalScore.text = "Score : " + ScoreBoardManager.Score;
+            BestScore.text = "Best : " + ScoreBoardManager.highscore;
+            GoldCoinBest.text = "Your Gold : " + ScoreBoardManager.GoldCoins;
+            gamemanager.gameState = gamemanager.GameState.empty;
+        }
+        
     }
     public void RestartButton()
     {
@@ -62,10 +60,7 @@ public class GameOverScript : MonoBehaviour
         
 
        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-   //  GameObject modepanel = GameObject.Find("GameModechoosingCanvas");
-   //  modepanel.SetActive(false);
-   //  GameObject startcanvas = GameObject.Find("StartCanvas");
-   //  startcanvas.SetActive(true);
+  
 
         PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + ScoreBoardManager.GoldCoins);
         ScoreBoardManager.GoldCoins = 0;
