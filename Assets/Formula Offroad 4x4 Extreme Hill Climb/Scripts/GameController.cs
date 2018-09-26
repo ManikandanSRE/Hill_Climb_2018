@@ -126,7 +126,7 @@ public class GameController : MonoBehaviour
             ft.useMotor = false;
             bt.useMotor = false;
             RotateLeft();
-            gamemanager.gameState = gamemanager.GameState.empty;
+            //gamemanager.gameState = gamemanager.GameState.empty;
             //CameraController.isalive = false;
         }
 

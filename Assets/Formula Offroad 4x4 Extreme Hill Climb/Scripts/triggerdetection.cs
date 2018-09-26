@@ -25,7 +25,7 @@ public class triggerdetection : MonoBehaviour
          {
              CollusionStatus = col.gameObject.tag;
              TriggeredGameObject = col.gameObject;
-             Debug.Log(col.gameObject.tag);
+             
          }
          else
          {
@@ -34,13 +34,13 @@ public class triggerdetection : MonoBehaviour
      }
      if (col.gameObject.tag.Contains("GoldCoin"))
      {
-         Debug.Log("GOLD COIN IN");
+        
          if (col.gameObject.tag.Contains("Green") == gameObject.tag.Contains("Green")) //for goldcoins
          {
-             Debug.Log("Colliding Green");
+            
              CollusionStatus = "GreenCoin";
              TriggeredGameObject = col.gameObject;
-             Debug.Log(col.gameObject.tag);
+            
          }
          else
          {
@@ -49,11 +49,11 @@ public class triggerdetection : MonoBehaviour
  
          if (col.gameObject.tag.Contains("Red") == gameObject.tag.Contains("Red"))     //for goldcoins
          {
-             Debug.Log("Colliding REd");
+            
  
              CollusionStatus = "RedCoin";
              TriggeredGameObject = col.gameObject;
-             Debug.Log(col.gameObject.tag);
+            
          }
          else
          {
@@ -74,7 +74,7 @@ public class triggerdetection : MonoBehaviour
              {
                  
                  Debug.Log("Plate Crossed but no button pressed");
-                 //GreenBttonController.isGameover = true;
+                 
                  gamemanager.gameState = gamemanager.GameState.Gameover;
                  new ScoreBoardManager().SetHighScore();
                  gameoverpanel.SetActive(true);

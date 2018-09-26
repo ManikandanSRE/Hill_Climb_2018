@@ -1,20 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameModeAccessScript : MonoBehaviour {
+public class GameModeAccessScript : MonoBehaviour
+{
 
-    private string mode;
-    public void SelectedLevel()
+
+    public void SelectedLevel(int carspeed)
+
     {
-        mode = gameObject.name;
+
+        gamemanager.carSpeed = carspeed;
+
+    }
+
+    public void SelectedLevelName(string mode)
+    {
         gamemanager.GameModeAccessSettingUp = mode;
         SceneManager.LoadScene(2);
     }
 
-    public void CarSpeedChanger(int carspeed)
-    {
-        gamemanager.carSpeed = carspeed;
-    }
+
+
 }

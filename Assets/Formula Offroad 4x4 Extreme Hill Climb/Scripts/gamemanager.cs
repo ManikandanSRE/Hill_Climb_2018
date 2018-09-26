@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gamemanager : MonoBehaviour
 {
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
     public int target = 30;         //for FBS
     public static GameState gameState;
     public static GameObject CurrentCar;
@@ -19,6 +24,12 @@ public class gamemanager : MonoBehaviour
 
     void Start()
     {
+<<<<<<< HEAD
+=======
+
+      
+
+>>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
         QualitySettings.vSyncCount = 0;
 
         Application.targetFrameRate = 30;    //for FBS
@@ -37,6 +48,9 @@ public class gamemanager : MonoBehaviour
             Application.targetFrameRate = target;
         }
     }
+
+
+  
 
     public enum GameState
     {

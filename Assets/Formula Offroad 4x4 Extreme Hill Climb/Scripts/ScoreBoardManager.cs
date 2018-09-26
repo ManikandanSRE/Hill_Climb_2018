@@ -155,6 +155,8 @@ public class ScoreBoardManager : MonoBehaviour
 
 
         GoldCoinText = GameObject.Find("GOLD COIN");
+
+        Debug.Log( GoldCoinText.name);
         GoldCoinValue = GoldCoinText.GetComponent<Text>();
 
 

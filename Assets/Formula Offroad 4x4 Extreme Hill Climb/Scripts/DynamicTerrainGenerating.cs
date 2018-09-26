@@ -10,9 +10,7 @@ public class DynamicTerrainGenerating : MonoBehaviour
     public static float distance = 0f;
     float timer = 0.5f;
 
-    public GameObject[] PlatesArray;
-    public Transform obj;
-    public float distancePlates;
+  
 
   
 

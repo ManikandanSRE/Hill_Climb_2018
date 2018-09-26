@@ -6,7 +6,12 @@ using UnityEngine.UI;
 
 public class SettingUpGame : MonoBehaviour
 {
+    [Header("Terms and Conditions")]
+    public GameObject termspanel;
 
+
+
+    [Header("Score")]
     public Text GoldCoinInMainPanel;
 
     public Text GoldCoinInShopPanel;
@@ -29,6 +34,7 @@ public class SettingUpGame : MonoBehaviour
     [Header("Top10 Score")]
 
     public List<Text> Top10HighScores = new List<Text>();
+<<<<<<< HEAD
 
     //public Text HighScoreText1;
     //public Text HighScoreText2;
@@ -40,6 +46,9 @@ public class SettingUpGame : MonoBehaviour
     //public Text HighScoreText8;
     //public Text HighScoreText9;
     //public Text HighScoreText10;
+=======
+   
+>>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
 
 
 
@@ -107,6 +116,7 @@ public class SettingUpGame : MonoBehaviour
             PlayerPrefs.SetString("HardHighScores", "0,0,0,0,0,0,0,0,0,0");
             PlayerPrefs.SetString("ExtremeHighScores", "0,0,0,0,0,0,0,0,0,0");           
         }
+<<<<<<< HEAD
         //Debug.Log("car1 " + PlayerPrefs.GetInt("car1"));         //carlist reset
         //Debug.Log("car2 " + PlayerPrefs.GetInt("car2"));
         //Debug.Log("car3 " + PlayerPrefs.GetInt("car3"));
@@ -146,20 +156,12 @@ public class SettingUpGame : MonoBehaviour
 
             PlayerPrefs.SetInt("car5", 0);                              //carlist reset
         }
+=======
 
 
-        // Debug.Log("T1 " + PlayerPrefs.GetInt("T1"));         //maplist reset
-        // Debug.Log("T2 " + PlayerPrefs.GetInt("T2"));
-        // Debug.Log("T3 " + PlayerPrefs.GetInt("T3"));
-        // Debug.Log("T4 " + PlayerPrefs.GetInt("T4"));
-        // Debug.Log("T5 " + PlayerPrefs.GetInt("T5"));
-        // Debug.Log("T6 " + PlayerPrefs.GetInt("T6"));
-        //  PlayerPrefs.SetInt("T1", 0);
-        //  PlayerPrefs.SetInt("T2", 0);
-        //  PlayerPrefs.SetInt("T3", 0);
-        //  PlayerPrefs.SetInt("T4", 0);
-        //  PlayerPrefs.SetInt("T5", 0);
-        //  PlayerPrefs.SetInt("T6", 0);
+   
+>>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
+
 
 
         //MapsList reset
@@ -195,7 +197,14 @@ public class SettingUpGame : MonoBehaviour
         }
 
         //PlayerPrefs.SetInt("Goldcoin_Godown", 0);    //for reseting goldgudown value
-
+        if (!PlayerPrefs.HasKey("termspanel"))
+        {
+            termspanel.SetActive(true);
+        }
+        else
+        {
+            termspanel.SetActive(false);
+        }
 
         if (!PlayerPrefs.HasKey("HighScore_EASY"))                    //highscore reset
         {
@@ -284,4 +293,27 @@ public class SettingUpGame : MonoBehaviour
         }
     }
 
+
+    public void AcceptPressed()
+    {
+        PlayerPrefs.SetInt("termspanel", 1);
+        termspanel.SetActive(false);
+    }
+    public void DeclinePressed()
+    {
+        Application.Quit();
+    }
+
+
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("yes your exit now");
+    }
+
+
+    public void UrlOpener(string url)
+    {
+        Application.OpenURL(url);
+    }
 }

@@ -100,8 +100,9 @@ public class GreenBttonController : MonoBehaviour
         else if (triggerdetection.CollusionStatus == "none")
         {
            
-            gamemanager.gameState = gamemanager.GameState.Gameover;
+           
             gameOverPanel.SetActive(true);
+            gamemanager.gameState = gamemanager.GameState.Gameover;
             boardManager.SetHighScore();
            // isGameover = true;
 
