@@ -66,7 +66,7 @@ public class RedButtonController : MonoBehaviour
 
             boardManager.GoldCoinAccess();
 
-            //Score.text = "yes it is correct(RED) so you get 1Point";
+            
             GreenBttonController.Buttonpressed = true;
             Destroy(triggerdetection.TriggeredGameObject);
             GreenBttonController.Buttonpressed = false;
@@ -107,10 +107,9 @@ public class RedButtonController : MonoBehaviour
         }
         else if (triggerdetection.CollusionStatus == "none")
         {
-            // InfoText.text = "GAME OVER!!!Don't press the button before";
             gameOverPanel.SetActive(true);
             boardManager.SetHighScore();
-            //GreenBttonController.isGameover = true;
+            
             gamemanager.gameState = gamemanager.GameState.Gameover;
 
         }
@@ -118,18 +117,18 @@ public class RedButtonController : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
             boardManager.SetHighScore();
-           // GreenBttonController.isGameover = true;
+           
             gamemanager.gameState = gamemanager.GameState.Gameover;
-            //InfoText.text = "Game over! you pressing wrong button";
+           
 
         }
         else if (triggerdetection.CollusionStatus == "GreenRing")
         {
             gameOverPanel.SetActive(true);
             boardManager.SetHighScore();
-           // GreenBttonController.isGameover = true;
+          
             gamemanager.gameState = gamemanager.GameState.Gameover;
-            //InfoText.text = "Game over! you pressing wrong button";
+           
 
         }
 

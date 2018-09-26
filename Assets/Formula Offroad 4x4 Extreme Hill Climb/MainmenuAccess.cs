@@ -32,13 +32,6 @@ public class MainmenuAccess : MonoBehaviour
         Application.Quit();
     }
 
-  //public void playgame(string ClickforMode)
-  //{
-  //    //Application.LoadLevel(ClickforMode);
-  //    SceneManager.LoadScene(ClickforMode);
-  //
-  //}
-
     public void Quit()
     {
         Application.Quit();

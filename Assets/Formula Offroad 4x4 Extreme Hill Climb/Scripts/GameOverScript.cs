@@ -34,8 +34,10 @@ public class GameOverScript : MonoBehaviour
     
     void Update()
     {
+      
         if (gamemanager.gameState == gamemanager.GameState.Gameover)
         {
+            
             FinalScore.text = "Score : " + ScoreBoardManager.Score;
             BestScore.text = "Best : " + ScoreBoardManager.highscore;
             GoldCoinBest.text = "Your Gold : " + ScoreBoardManager.GoldCoins;

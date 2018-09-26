@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gamemanager : MonoBehaviour
 {
-
-
+  
     public int target = 30;         //for FBS
 
     public static GameState gameState;
@@ -22,6 +22,8 @@ public class gamemanager : MonoBehaviour
 
     void Start()
     {
+
+      
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;    //for FBS
@@ -45,6 +47,9 @@ public class gamemanager : MonoBehaviour
             Application.targetFrameRate = target;
         }
     }
+
+
+  
 
     public enum GameState
     {

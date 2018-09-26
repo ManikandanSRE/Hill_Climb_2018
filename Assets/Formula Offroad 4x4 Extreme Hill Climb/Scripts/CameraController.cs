@@ -30,7 +30,6 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         gamemanager.gameState = gamemanager.GameState.playing;
-        Debug.Log(PlayerPrefs.GetInt("selectedMap"));
 
         GameOverPanel = GameObject.Find("GameOverPanel");
         GameOverPanel.SetActive(false);
