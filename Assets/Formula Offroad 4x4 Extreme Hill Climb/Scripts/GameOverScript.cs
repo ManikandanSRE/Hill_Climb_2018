@@ -15,23 +15,13 @@ public class GameOverScript : MonoBehaviour
     public Text BestScore;
     public Text GoldCoinBest;
 
-  
-
     InterstitialAd interstitial;
-
 
     // Use this for initialization
     void Start()
-    {
-
-       
-
-          
+    {        
         RequestInterstitial();
-
-    }
-
-    
+    }   
     void Update()
     {
         if (gamemanager.gameState == gamemanager.GameState.Gameover)
@@ -40,6 +30,13 @@ public class GameOverScript : MonoBehaviour
             BestScore.text = "Best : " + ScoreBoardManager.highscore;
             GoldCoinBest.text = "Your Gold : " + ScoreBoardManager.GoldCoins;
             gamemanager.gameState = gamemanager.GameState.empty;
+
+            if (RewardAdmob.videowatchedfully)
+            {
+                ScoreBoardManager.GoldCoins = ScoreBoardManager.GoldCoins * 2;
+                PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + ScoreBoardManager.GoldCoins);
+                ScoreBoardManager.GoldCoins = 0;
+            }
         }
         
     }
@@ -49,22 +46,14 @@ public class GameOverScript : MonoBehaviour
         if ((gamemanager.ReloadValue % 5) == 0)
         {
             if (interstitial.IsLoaded())
-            {
-       
+            {       
                 Debug.Log("Working");
                 interstitial.Show();
-            }
-       
-        }
-
-        
-
+            }      
+        }      
        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-  
-
         PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + ScoreBoardManager.GoldCoins);
         ScoreBoardManager.GoldCoins = 0;
-
     }
 
     private void RequestInterstitial()

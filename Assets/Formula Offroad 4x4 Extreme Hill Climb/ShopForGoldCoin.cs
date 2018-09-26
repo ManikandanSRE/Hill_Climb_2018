@@ -9,15 +9,10 @@ public class ShopForGoldCoin : MonoBehaviour
     public Image simage;
     public Image ChangepanaelImage;
 
-
-
-
     [Header("ModeSelectionPanel")]
 
     public Image ModeSelectionPanelVehicleImage;
     public Image ModeSelectionPanelMapImage;
-
-
 
     [Header("ColourPanel")]
     public Button ChangeButton;
@@ -30,8 +25,8 @@ public class ShopForGoldCoin : MonoBehaviour
     [Header("Main Panel")]
     public InputField TypeGoldAmount;
     public Text GoldGodownValueText;
-   
-    int GoldCoinAmount;
+
+    public static int GoldCoinAmount;
     int RawimageOfCar;
     int RawimageOfMap;
     public Button SelectingCarButtonOnRawImage;
@@ -69,33 +64,22 @@ public class ShopForGoldCoin : MonoBehaviour
         ModeSelectionPanelVehicleImage.preserveAspect = true;
         ModeSelectionPanelMapImage.preserveAspect = true;
 
-
-
-
-
         simage.preserveAspect = true;
         ChangepanaelImage.preserveAspect = true;
 
-        //LastselectedCarNumber = PlayerPrefs.GetInt("LastPlayedCar");
-        //gamemanager.CurrentCar = CarPrefabs[LastselectedCarNumber];
-
-       
         itemspot = 0;
         Mapsitemspot = 0;
         GoldCoinAmount = PlayerPrefs.GetInt("Goldcoin_Godown");
         GoldGodownValueText.text = "Gold Coin : " + GoldCoinAmount;
 
-
         SelectionPad.texture = ItemList[itemspot].texture;
         simage.sprite = ItemList[itemspot];
         SelectionPadMaps.texture = MapsItemList[Mapsitemspot].texture;
-
 
         BuyButton.gameObject.SetActive(false);
         if (itemspot == PlayerPrefs.GetInt("selectedCar"))
         {
             SelectButtonCar.gameObject.SetActive(false);
-
         }
         else
         {
@@ -130,7 +114,7 @@ public class ShopForGoldCoin : MonoBehaviour
         PlayerPrefs.SetInt("CarShop", 0);
         RawimageOfCar = PlayerPrefs.GetInt("CarShop");
 
-        if (GoldCoinAmount >= 5 && RawimageOfCar == 0)
+        if (PlayerPrefs.GetInt("Goldcoin_Godown") >= 5 && RawimageOfCar == 0)
         {
 
             BuyButton.interactable = true;
@@ -148,7 +132,7 @@ public class ShopForGoldCoin : MonoBehaviour
         PlayerPrefs.SetInt("MapShop", 0);
         RawimageOfCar = PlayerPrefs.GetInt("MapShop");
 
-        if (GoldCoinAmount >= 3 && RawimageOfMap == 0)
+        if (PlayerPrefs.GetInt("Goldcoin_Godown") >= 3 && RawimageOfMap == 0)
         {
             BuyButtonForMaps.interactable = true;
         }
@@ -181,10 +165,12 @@ public class ShopForGoldCoin : MonoBehaviour
             SelectButtonCar.gameObject.SetActive(false);
         }
 
-        else { SelectButtonCar.gameObject.SetActive(true);
+        else
+        {
+            SelectButtonCar.gameObject.SetActive(true);
             ChangeButton.gameObject.SetActive(false);
         }
-            
+
         GoldGodownValueText.text = "Gold Coin : " + GoldCoinAmount;
         PlayerPrefs.SetInt(ItemList[itemspot].texture.name, 1);
         PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
@@ -205,7 +191,7 @@ public class ShopForGoldCoin : MonoBehaviour
     {
         if (itemspot > 0)
         {
-            itemspot= itemspot - 10;
+            itemspot = itemspot - 10;
             SelectionPad.texture = ItemList[itemspot].texture;
             simage.sprite = ItemList[itemspot];
             if (PlayerPrefs.GetInt(ItemList[itemspot].texture.name) == 0)
@@ -264,7 +250,7 @@ public class ShopForGoldCoin : MonoBehaviour
     {
         if (itemspot < ItemList.Count - 10)
         {
-            itemspot=itemspot+10;
+            itemspot = itemspot + 10;
             SelectionPad.texture = ItemList[itemspot].texture;
             simage.sprite = ItemList[itemspot];
             if (PlayerPrefs.GetInt(ItemList[itemspot].texture.name) == 0)
@@ -382,26 +368,24 @@ public class ShopForGoldCoin : MonoBehaviour
     {
         if (PlayerPrefs.GetInt(ItemList[itemspot].texture.name) == 1)
         {
-
             PlayerPrefs.SetInt("selectedCar", itemspot);
             ModeSelectionPanelVehicleImage.sprite = ItemList[PlayerPrefs.GetInt("selectedCar")];
-            
             SelectButtonCar.gameObject.SetActive(false);
         }
     }
 
-public void SelectMap()
+    public void SelectMap()
     {
         Debug.Log(MapsItemList[Mapsitemspot].texture.name);
         Debug.Log(PlayerPrefs.GetInt(MapsItemList[Mapsitemspot].texture.name));
-        
-            if (PlayerPrefs.GetInt(MapsItemList[Mapsitemspot].texture.name) == 1)
+        if (PlayerPrefs.GetInt(MapsItemList[Mapsitemspot].texture.name) == 1)
         {
             PlayerPrefs.SetInt("selectedMap", Mapsitemspot);
-           
+            
             ModeSelectionPanelMapImage.sprite = MapsItemList[PlayerPrefs.GetInt("selectedMap")];
-            SelectButtonMaps.gameObject.SetActive(false);
+            SelectButtonMaps.gameObject.SetActive(false);           
         }
+        PlayerPrefs.Save();
     }
 
     public void GoldPurchase()
@@ -430,7 +414,7 @@ public void SelectMap()
 
     public void changePanelRightButtonClick()
     {
-        if (changePanelCarCount < tagNames.Count-1)
+        if (changePanelCarCount < tagNames.Count - 1)
         {
             changePanelCarCount++;
             ChangePanelRawImage.texture = ItemList[tagNames[changePanelCarCount]].texture;
@@ -455,10 +439,10 @@ public void SelectMap()
 
 
     public void SelectionButtonOnColourChangePanel()
-    {        
-            PlayerPrefs.SetInt("selectedCar", tagNames[changePanelCarCount]);
+    {
+        PlayerPrefs.SetInt("selectedCar", tagNames[changePanelCarCount]);
         ModeSelectionPanelVehicleImage.sprite = ItemList[PlayerPrefs.GetInt("selectedCar")];
-       
-        changePanelSelectButton.gameObject.SetActive(false);        
+
+        changePanelSelectButton.gameObject.SetActive(false);
     }
 }

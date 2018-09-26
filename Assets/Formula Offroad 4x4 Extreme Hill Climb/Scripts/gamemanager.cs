@@ -2,10 +2,7 @@
 
 public class gamemanager : MonoBehaviour
 {
-
-
     public int target = 30;         //for FBS
-
     public static GameState gameState;
     public static GameObject CurrentCar;
     public static int ReloadValue = 0;
@@ -22,24 +19,19 @@ public class gamemanager : MonoBehaviour
 
     void Start()
     {
-
         QualitySettings.vSyncCount = 0;
+
         Application.targetFrameRate = 30;    //for FBS
-
-
 
         SoundIsOn = System.Convert.ToBoolean(PlayerPrefs.GetInt("SoundSet"));
 
         MusicSoundRise = PlayerPrefs.GetFloat("MusicSet");
-
-
 
         DontDestroyOnLoad(this);   //this=gameobject   
     }
 
     void Update()
     {
-
         if (target != Application.targetFrameRate)
         {
             Application.targetFrameRate = target;
@@ -53,6 +45,4 @@ public class gamemanager : MonoBehaviour
         paused,
         Gameover
     }
-
-
 }

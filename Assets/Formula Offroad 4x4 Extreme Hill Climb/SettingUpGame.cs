@@ -29,6 +29,7 @@ public class SettingUpGame : MonoBehaviour
     [Header("Top10 Score")]
 
     public List<Text> Top10HighScores = new List<Text>();
+
     //public Text HighScoreText1;
     //public Text HighScoreText2;
     //public Text HighScoreText3;
@@ -44,10 +45,11 @@ public class SettingUpGame : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    private void Awake()
     {
 
 
+       
 
         resetPlayerPrefs();
 
@@ -59,9 +61,6 @@ public class SettingUpGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
         EasyHighScoreText.text = PlayerPrefs.GetInt("HighScore_EASY").ToString();
         NormalHighScoreText.text = PlayerPrefs.GetInt("HighScore_NORMAL").ToString();
         HardHighScoreText.text = PlayerPrefs.GetInt("HighScore_HARD").ToString();
@@ -78,19 +77,36 @@ public class SettingUpGame : MonoBehaviour
 
     public void resetPlayerPrefs()
     {
-       
+        //if (!PlayerPrefs.HasKey("EasyPanel"))
+        //{
+        //    PlayerPrefs.SetInt("EasyPanel", 0);
+        //}
+
+        //if (!PlayerPrefs.HasKey("NormalPanel"))
+        //{
+        //    PlayerPrefs.SetInt("NormalPanel", 0);
+        //}
+
+        //if (!PlayerPrefs.HasKey("HardPanel"))
+        //{
+        //    PlayerPrefs.SetInt("HardPanel", 0);
+        //}
+
+        //if (!PlayerPrefs.HasKey("ExtremePanel"))
+        //{
+        //    PlayerPrefs.SetInt("ExtremePanel", 0);
+        //}
+
+
+
+
         if (!PlayerPrefs.HasKey("EasyHighScores") && !PlayerPrefs.HasKey("NormalHighScores") && !PlayerPrefs.HasKey("HardHighScores") && !PlayerPrefs.HasKey("ExtremeHighScores"))
         {
             PlayerPrefs.SetString("EasyHighScores", "0,0,0,0,0,0,0,0,0,0");
             PlayerPrefs.SetString("NormalHighScores", "0,0,0,0,0,0,0,0,0,0");
             PlayerPrefs.SetString("HardHighScores", "0,0,0,0,0,0,0,0,0,0");
-            PlayerPrefs.SetString("ExtremeHighScores", "0,0,0,0,0,0,0,0,0,0");
-
-
-            
+            PlayerPrefs.SetString("ExtremeHighScores", "0,0,0,0,0,0,0,0,0,0");           
         }
-
-
         //Debug.Log("car1 " + PlayerPrefs.GetInt("car1"));         //carlist reset
         //Debug.Log("car2 " + PlayerPrefs.GetInt("car2"));
         //Debug.Log("car3 " + PlayerPrefs.GetInt("car3"));
@@ -173,10 +189,9 @@ public class SettingUpGame : MonoBehaviour
         }
 
 
-
         if (!PlayerPrefs.HasKey("Goldcoin_Godown"))                 //shopGold Reset       
         {
-            PlayerPrefs.SetInt("Goldcoin_Godown", 100000);
+            PlayerPrefs.SetInt("Goldcoin_Godown", 1000);
         }
 
         //PlayerPrefs.SetInt("Goldcoin_Godown", 0);    //for reseting goldgudown value
