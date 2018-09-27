@@ -16,7 +16,7 @@ public class GameModeAccessScript : MonoBehaviour
     public void SelectedLevelName(string mode)
     {
         gamemanager.GameModeAccessSettingUp = mode;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadSceneAsync(2);
     }
 
 

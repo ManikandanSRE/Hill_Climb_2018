@@ -53,7 +53,7 @@ public class GameOverScript : MonoBehaviour
                 interstitial.Show();
             }      
         }      
-       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+       SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + ScoreBoardManager.GoldCoins);
         ScoreBoardManager.GoldCoins = 0;
     }

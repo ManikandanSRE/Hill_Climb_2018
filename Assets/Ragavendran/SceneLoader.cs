@@ -18,6 +18,6 @@ public class SceneLoader : MonoBehaviour {
 
     public void OnSceneLoad(int SceneNumber)
     {
-        SceneManager.LoadScene(SceneNumber);
+        SceneManager.LoadSceneAsync(SceneNumber);
     }
 }

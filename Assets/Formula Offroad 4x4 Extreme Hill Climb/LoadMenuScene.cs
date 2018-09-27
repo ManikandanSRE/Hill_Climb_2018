@@ -11,7 +11,7 @@ public class LoadMenuScene : MonoBehaviour {
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
        
     }
 

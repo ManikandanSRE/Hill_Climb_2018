@@ -17,7 +17,7 @@ public class SplashScreenScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(3);
         SceneNumber = 1;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 	
 }
