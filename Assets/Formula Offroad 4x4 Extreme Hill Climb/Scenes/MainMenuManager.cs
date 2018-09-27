@@ -13,7 +13,9 @@ public class MainMenuManager : MonoBehaviour {
 
     [Header("Score")]
     public Text GoldCoinInMainPanel;
-    public Text GoldCoinInShopPanel;
+    public Text GoldCoinInCarShopPanel;
+    public Text GoldCoinInMapShopPanel;
+
     public Text EasyHighScore;
     public Text NormalHighScore;
     public Text HardHighScore;
@@ -36,7 +38,7 @@ public class MainMenuManager : MonoBehaviour {
 
     [Header("Sound Controls")]
     public bool SoundOn;
-    public Button OnOffbutton;
+    public Button OnOffButton;
     public Sprite OnImage;
     public Sprite OffImage;
     public static bool SoundManager;
@@ -72,6 +74,7 @@ public class MainMenuManager : MonoBehaviour {
     [Header("Main Panel")]
     public InputField TypeGoldAmount;
     public Text GoldGodownValueText;
+    public Text GoldCoinInCarPanel;
     public static int GoldCoinAmount;
     int RawimageOfCar;
     int RawimageOfMap;
@@ -83,7 +86,7 @@ public class MainMenuManager : MonoBehaviour {
     public Button BuyButtonForMaps;
     public Button SelectButtonMaps;
     public int LastselectedCarNumber;
-    public RawImage SelectionPad;                                    
+    //public RawImage SelectionPad;                                    
     public List<Sprite> ItemList = new List<Sprite>();
     public static int itemspot = 0;
     public RawImage SelectionPadMaps;                                 
@@ -124,10 +127,10 @@ public class MainMenuManager : MonoBehaviour {
 
         if (!gamemanager.SoundIsOn)
         {
-            OnOffbutton.image.sprite = OffImage;
+            OnOffButton.image.sprite = OffImage;
         }
         else
-            OnOffbutton.image.sprite = OnImage;
+            OnOffButton.image.sprite = OnImage;
 
 
         audioSource.volume = gamemanager.MusicSoundRise;   //music       
@@ -152,7 +155,7 @@ public class MainMenuManager : MonoBehaviour {
         GoldCoinAmount = PlayerPrefs.GetInt("Goldcoin_Godown");
         GoldGodownValueText.text = "Gold Coin : " + GoldCoinAmount;
 
-        SelectionPad.texture = ItemList[itemspot].texture;
+       // SelectionPad.texture = ItemList[itemspot].texture;
         simage.sprite = ItemList[itemspot];
         SelectionPadMaps.texture = MapsItemList[Mapsitemspot].texture;
 
@@ -188,7 +191,7 @@ public class MainMenuManager : MonoBehaviour {
         ExtremeHighScoreText.text = PlayerPrefs.GetInt("HighScore_EXTREMEHARD").ToString();
 
         GoldCoinInMainPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
-        GoldCoinInShopPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
+        GoldCoinInCarShopPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
 
         EasyHighScore.text = "HighScore \n " + PlayerPrefs.GetInt("HighScore_EASY");
         NormalHighScore.text = "HighScore\n " + PlayerPrefs.GetInt("HighScore_NORMAL");
@@ -461,7 +464,7 @@ public class MainMenuManager : MonoBehaviour {
         if (itemspot > 0)
         {
             itemspot = itemspot - 10;
-            SelectionPad.texture = ItemList[itemspot].texture;
+            //SelectionPad.texture = ItemList[itemspot].texture;
             simage.sprite = ItemList[itemspot];
             if (PlayerPrefs.GetInt(ItemList[itemspot].texture.name) == 0)
             {
@@ -520,7 +523,7 @@ public class MainMenuManager : MonoBehaviour {
         if (itemspot < ItemList.Count - 10)
         {
             itemspot = itemspot + 10;
-            SelectionPad.texture = ItemList[itemspot].texture;
+            //SelectionPad.texture = ItemList[itemspot].texture;
             simage.sprite = ItemList[itemspot];
             if (PlayerPrefs.GetInt(ItemList[itemspot].texture.name) == 0)
             {
