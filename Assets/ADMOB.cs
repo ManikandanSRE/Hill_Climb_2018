@@ -82,21 +82,15 @@ public class ADMOB : MonoBehaviour
 #else
             string adUnitId = "unexpected_platform";
 #endif
-
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded video ad with the request.
-        this.rewardBasedVideo.LoadAd(request, adUnitId);
-
-
-         
+        this.rewardBasedVideo.LoadAd(request, adUnitId);       
     }
     public  void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
         
-        ScoreBoardManager.GoldCoins = ScoreBoardManager.GoldCoins * 2;
-
-        
+        ScoreBoardManager.GoldCoins = ScoreBoardManager.GoldCoins * 2;        
         PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + ScoreBoardManager.GoldCoins);
         ScoreBoardManager.GoldCoins = 0;
     }

@@ -3,9 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class gamemanager : MonoBehaviour
 {
+<<<<<<< HEAD
+=======
   
+>>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
     public int target = 30;         //for FBS
-
     public static GameState gameState;
     public static GameObject CurrentCar;
     public static int ReloadValue = 0;
@@ -22,26 +24,25 @@ public class gamemanager : MonoBehaviour
 
     void Start()
     {
+<<<<<<< HEAD
+=======
 
       
 
+>>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
         QualitySettings.vSyncCount = 0;
+
         Application.targetFrameRate = 30;    //for FBS
-
-
 
         SoundIsOn = System.Convert.ToBoolean(PlayerPrefs.GetInt("SoundSet"));
 
         MusicSoundRise = PlayerPrefs.GetFloat("MusicSet");
-
-
 
         DontDestroyOnLoad(this);   //this=gameobject   
     }
 
     void Update()
     {
-
         if (target != Application.targetFrameRate)
         {
             Application.targetFrameRate = target;
@@ -58,6 +59,4 @@ public class gamemanager : MonoBehaviour
         paused,
         Gameover
     }
-
-
 }
