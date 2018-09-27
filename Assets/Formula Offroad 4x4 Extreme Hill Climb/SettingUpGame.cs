@@ -34,31 +34,19 @@ public class SettingUpGame : MonoBehaviour
     [Header("Top10 Score")]
 
     public List<Text> Top10HighScores = new List<Text>();
-<<<<<<< HEAD
 
-    //public Text HighScoreText1;
-    //public Text HighScoreText2;
-    //public Text HighScoreText3;
-    //public Text HighScoreText4;
-    //public Text HighScoreText5;
-    //public Text HighScoreText6;
-    //public Text HighScoreText7;
-    //public Text HighScoreText8;
-    //public Text HighScoreText9;
-    //public Text HighScoreText10;
-=======
-   
->>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
+
+
 
 
 
 
     // Use this for initialization
-<<<<<<< HEAD
-    void Awake()
-=======
+
+  
+
     private void Awake()
->>>>>>> be7c6284c0c4e980ed2fbba9d04b944da1659207
+
     {
 
 
@@ -90,26 +78,7 @@ public class SettingUpGame : MonoBehaviour
 
     public void resetPlayerPrefs()
     {
-        //if (!PlayerPrefs.HasKey("EasyPanel"))
-        //{
-        //    PlayerPrefs.SetInt("EasyPanel", 0);
-        //}
-
-        //if (!PlayerPrefs.HasKey("NormalPanel"))
-        //{
-        //    PlayerPrefs.SetInt("NormalPanel", 0);
-        //}
-
-        //if (!PlayerPrefs.HasKey("HardPanel"))
-        //{
-        //    PlayerPrefs.SetInt("HardPanel", 0);
-        //}
-
-        //if (!PlayerPrefs.HasKey("ExtremePanel"))
-        //{
-        //    PlayerPrefs.SetInt("ExtremePanel", 0);
-        //}
-
+        
 
 
 
@@ -120,79 +89,34 @@ public class SettingUpGame : MonoBehaviour
             PlayerPrefs.SetString("HardHighScores", "0,0,0,0,0,0,0,0,0,0");
             PlayerPrefs.SetString("ExtremeHighScores", "0,0,0,0,0,0,0,0,0,0");           
         }
-<<<<<<< HEAD
-        //Debug.Log("car1 " + PlayerPrefs.GetInt("car1"));         //carlist reset
-        //Debug.Log("car2 " + PlayerPrefs.GetInt("car2"));
-        //Debug.Log("car3 " + PlayerPrefs.GetInt("car3"));
-        //Debug.Log("car4 " + PlayerPrefs.GetInt("car4"));
-        //Debug.Log("car5 " + PlayerPrefs.GetInt("car5"));
-        // PlayerPrefs.SetInt("car1", 0);
-        // PlayerPrefs.SetInt("car2", 0);
-        // PlayerPrefs.SetInt("car3", 0);
-        // PlayerPrefs.SetInt("car4", 0);
-        // PlayerPrefs.SetInt("car5", 0);
-        if (!PlayerPrefs.HasKey("car1"))              //car reset
-        {
-            //PlayerPrefs.SetString("CarDetails", "[{\"carname\":\"car1\",\"isbought\":\"0\"},{\"carname\":\"car2\",\"isbought\":\"0\"},{\"carname\":\"car3\",\"isbought\":\"0\"},{\"carname\":\"car4\",\"isbought\":\"0\"},{\"carname\":\"car5\",\"isbought\":\"0\"}]");
-            PlayerPrefs.SetInt("car1", 0);
-        }
-
-        if (!PlayerPrefs.HasKey("car2"))
-        {
-            PlayerPrefs.SetInt("car2", 0);
-        }
-
-        if (!PlayerPrefs.HasKey("car3"))
-        {
-            PlayerPrefs.SetInt("car3", 0);
-
-        }
-
-        if (!PlayerPrefs.HasKey("car4"))
-        {
-
-            PlayerPrefs.SetInt("car4", 0);
-
-        }
-
-        if (!PlayerPrefs.HasKey("car5"))
-        {
-
-            PlayerPrefs.SetInt("car5", 0);                              //carlist reset
-        }
-=======
-
-
-   
->>>>>>> 7aca0c74f281cf0ad8befc376fc1bec2bd9979c1
 
 
 
-        //MapsList reset
-        if (!PlayerPrefs.HasKey("T1"))           //maps reset       
-        {
-            PlayerPrefs.SetInt("T1", 0);
-        }
-        if (!PlayerPrefs.HasKey("T2"))
-        {
-            PlayerPrefs.SetInt("T2", 0);
-        }
-        if (!PlayerPrefs.HasKey("T3"))
-        {
-            PlayerPrefs.SetInt("T3", 0);
-        }
-        if (!PlayerPrefs.HasKey("T4"))
-        {
-            PlayerPrefs.SetInt("T4", 0);
-        }
-        if (!PlayerPrefs.HasKey("T5"))
-        {
-            PlayerPrefs.SetInt("T5", 0);
-        }
-        if (!PlayerPrefs.HasKey("T6"))
-        {
-            PlayerPrefs.SetInt("T6", 0);
-        }
+     // //MapsList reset
+     // if (!PlayerPrefs.HasKey("T1"))           //maps reset       
+     // {
+     //     PlayerPrefs.SetInt("T1", 0);
+     // }
+     // if (!PlayerPrefs.HasKey("T2"))
+     // {
+     //     PlayerPrefs.SetInt("T2", 0);
+     // }
+     // if (!PlayerPrefs.HasKey("T3"))
+     // {
+     //     PlayerPrefs.SetInt("T3", 0);
+     // }
+     // if (!PlayerPrefs.HasKey("T4"))
+     // {
+     //     PlayerPrefs.SetInt("T4", 0);
+     // }
+     // if (!PlayerPrefs.HasKey("T5"))
+     // {
+     //     PlayerPrefs.SetInt("T5", 0);
+     // }
+     // if (!PlayerPrefs.HasKey("T6"))
+     // {
+     //     PlayerPrefs.SetInt("T6", 0);
+     // }
 
 
         if (!PlayerPrefs.HasKey("Goldcoin_Godown"))                 //shopGold Reset       
@@ -228,15 +152,15 @@ public class SettingUpGame : MonoBehaviour
         }
 
 
-        if (!PlayerPrefs.HasKey("MOON"))
-        {
-            PlayerPrefs.SetInt("MOON", 1);
-        }
-
-        if (!PlayerPrefs.HasKey("Dessert_BG"))
-        {
-            PlayerPrefs.SetInt("Dessert_BG", 1);
-        }
+      //  if (!PlayerPrefs.HasKey("MOON"))
+      //  {
+      //      PlayerPrefs.SetInt("MOON", 1);
+      //  }
+      //
+      //  if (!PlayerPrefs.HasKey("Dessert_BG"))
+      //  {
+      //      PlayerPrefs.SetInt("Dessert_BG", 1);
+      //  }
 
 
         if (!PlayerPrefs.HasKey("selectedCar"))
