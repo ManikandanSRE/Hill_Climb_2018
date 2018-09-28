@@ -113,7 +113,8 @@ public class MainMenuManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        //Update Gold Coin
+        UpdateGoldCoin();
         ////PanelDestroyer
         EasyPanel.GetComponent<Button>().onClick.AddListener(Easydes);
         NormalPanel.GetComponent<Button>().onClick.AddListener(NormalDes);
@@ -190,9 +191,7 @@ public class MainMenuManager : MonoBehaviour {
         HardHighScoreText.text = PlayerPrefs.GetInt("HighScore_HARD").ToString();
         ExtremeHighScoreText.text = PlayerPrefs.GetInt("HighScore_EXTREMEHARD").ToString();
 
-        GoldCoinInMainPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
-        GoldCoinInCarShopPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
-
+       
         EasyHighScore.text = "HighScore \n " + PlayerPrefs.GetInt("HighScore_EASY");
         NormalHighScore.text = "HighScore\n " + PlayerPrefs.GetInt("HighScore_NORMAL");
         HardHighScore.text = "HighScore \n " + PlayerPrefs.GetInt("HighScore_HARD");
@@ -221,33 +220,6 @@ public class MainMenuManager : MonoBehaviour {
             PlayerPrefs.SetString("ExtremeHighScores", "0,0,0,0,0,0,0,0,0,0");
         }
 
-
-
-        // //MapsList reset
-        // if (!PlayerPrefs.HasKey("T1"))           //maps reset       
-        // {
-        //     PlayerPrefs.SetInt("T1", 0);
-        // }
-        // if (!PlayerPrefs.HasKey("T2"))
-        // {
-        //     PlayerPrefs.SetInt("T2", 0);
-        // }
-        // if (!PlayerPrefs.HasKey("T3"))
-        // {
-        //     PlayerPrefs.SetInt("T3", 0);
-        // }
-        // if (!PlayerPrefs.HasKey("T4"))
-        // {
-        //     PlayerPrefs.SetInt("T4", 0);
-        // }
-        // if (!PlayerPrefs.HasKey("T5"))
-        // {
-        //     PlayerPrefs.SetInt("T5", 0);
-        // }
-        // if (!PlayerPrefs.HasKey("T6"))
-        // {
-        //     PlayerPrefs.SetInt("T6", 0);
-        // }
 
 
         if (!PlayerPrefs.HasKey("Goldcoin_Godown"))                 //shopGold Reset       
@@ -282,16 +254,6 @@ public class MainMenuManager : MonoBehaviour {
             PlayerPrefs.SetInt("HighScore_EXTREMEHARD", 0);
         }
 
-
-        //  if (!PlayerPrefs.HasKey("MOON"))
-        //  {
-        //      PlayerPrefs.SetInt("MOON", 1);
-        //  }
-        //
-        //  if (!PlayerPrefs.HasKey("Dessert_BG"))
-        //  {
-        //      PlayerPrefs.SetInt("Dessert_BG", 1);
-        //  }
 
 
         if (!PlayerPrefs.HasKey("selectedCar"))
@@ -618,6 +580,7 @@ public class MainMenuManager : MonoBehaviour {
             {
                 BuyButtonForMaps.gameObject.SetActive(true);
                 SelectButtonMaps.gameObject.SetActive(false);
+                RawimageOfMapsAmountText.text = "3$";
             }
             else
             {
@@ -630,6 +593,7 @@ public class MainMenuManager : MonoBehaviour {
                 {
                     SelectButtonMaps.gameObject.SetActive(true);
                 }
+                RawimageOfMapsAmountText.text = " ";
             }
 
         }
@@ -659,7 +623,7 @@ public class MainMenuManager : MonoBehaviour {
         }
         PlayerPrefs.Save();
     }
-
+    
     public void GoldPurchase()
     {
         PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + Convert.ToInt32(TypeGoldAmount.text));
@@ -790,48 +754,49 @@ public class MainMenuManager : MonoBehaviour {
 
     public void Easydes()
     {
-        if (ShopForGoldCoin.GoldCoinAmount >= 50)
+        Debug.Log(ShopForGoldCoin.GoldCoinAmount);
+        if (GoldCoinAmount >= 50)
         {
             EasyPanel.gameObject.SetActive(false);
             PlayerPrefs.SetInt("EasyPanel_" + PlayerPrefs.GetInt("selectedMap"), 1);
-            ShopForGoldCoin.GoldCoinAmount -= 50;
-            PlayerPrefs.SetInt("Goldcoin_Godown", ShopForGoldCoin.GoldCoinAmount);
+            GoldCoinAmount -= 50;
+            PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
         }
         else EasyPanel.gameObject.SetActive(true);
     }
 
     public void NormalDes()
     {
-        if (ShopForGoldCoin.GoldCoinAmount >= 100)
+        if (GoldCoinAmount >= 100)
         {
             NormalPanel.gameObject.SetActive(false);
             PlayerPrefs.SetInt("NormalPanel_" + PlayerPrefs.GetInt("selectedMap"), 1);
-            ShopForGoldCoin.GoldCoinAmount -= 100;
-            PlayerPrefs.SetInt("Goldcoin_Godown", ShopForGoldCoin.GoldCoinAmount);
+            GoldCoinAmount -= 100;
+            PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
         }
         else NormalPanel.gameObject.SetActive(true);
     }
 
     public void HardDes()
     {
-        if (ShopForGoldCoin.GoldCoinAmount >= 150)
+        if (GoldCoinAmount >= 150)
         {
             hardPanel.gameObject.SetActive(false);
             PlayerPrefs.SetInt("HardPanel_" + PlayerPrefs.GetInt("selectedMap"), 1);
-            ShopForGoldCoin.GoldCoinAmount -= 150;
-            PlayerPrefs.SetInt("Goldcoin_Godown", ShopForGoldCoin.GoldCoinAmount);
+            GoldCoinAmount -= 150;
+            PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
         }
         else hardPanel.gameObject.SetActive(true);
     }
 
     public void ExtremeDes()
     {
-        if (ShopForGoldCoin.GoldCoinAmount >= 200)
+        if (GoldCoinAmount >= 200)
         {
             ExtremePanel.gameObject.SetActive(false);
             PlayerPrefs.SetInt("ExtremePanel_" + PlayerPrefs.GetInt("selectedMap"), 1);
-            ShopForGoldCoin.GoldCoinAmount -= 200;
-            PlayerPrefs.SetInt("Goldcoin_Godown", ShopForGoldCoin.GoldCoinAmount);
+            GoldCoinAmount -= 200;
+            PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
         }
         else ExtremePanel.gameObject.SetActive(true);
     }
@@ -839,5 +804,14 @@ public class MainMenuManager : MonoBehaviour {
     public void resetprefs()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+
+    //Update GoldCOin
+    public void UpdateGoldCoin()
+    {
+        GoldCoinInMainPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
+        GoldCoinInCarShopPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
+        GoldCoinInMapShopPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
     }
 }

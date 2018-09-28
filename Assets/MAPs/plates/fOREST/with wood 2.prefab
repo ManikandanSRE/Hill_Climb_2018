@@ -59,7 +59,6 @@ GameObject:
   - component: {fileID: 212538740970204964}
   - component: {fileID: 61176182919211356}
   - component: {fileID: 114852808149517226}
-  - component: {fileID: 114598475760265106}
   m_Layer: 0
   m_Name: BBR
   m_TagString: RedRing
@@ -455,17 +454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TerrainDestructor: {fileID: 0}
---- !u!114 &114598475760265106
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1883751334917104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b784b181ab487240b7917ae05a72e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114730527631524082
 MonoBehaviour:
   m_ObjectHideFlags: 1
