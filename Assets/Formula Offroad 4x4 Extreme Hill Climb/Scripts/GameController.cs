@@ -50,56 +50,10 @@ public class GameController : MonoBehaviour
         bt = BackWheel.GetComponent<HingeJoint2D>();
         ft.useMotor = false;
         bt.useMotor = true;
-        ///wheeljoint componet used to save inside the BT...true means,when the game start motor automatically on.
+        
 
 
         StartCoroutine(delayedAssign());
-       // if (GameModeAccess == "EASY")
-       // {
-           // CarSpeed = gamemanager.carSpeed;
-           // JointMotor2D TempFront = ft.motor; /// this 3lines used for fornt wheel motor run;;;       
-           // TempFront.motorSpeed = CarSpeed;
-           // ft.motor = TempFront;
-           //
-           // JointMotor2D TempBack = bt.motor; /// this 3-lines used for Back wheel motor run;;;
-           // TempBack.motorSpeed = CarSpeed;
-           // bt.motor = TempBack;
-     // }
-     // if (GameModeAccess == "NORMAL")
-     // {
-     //     CarSpeed = 800f;
-     //     JointMotor2D TempFront = ft.motor; /// this 3lines used for fornt wheel motor run;;;       
-     //     TempFront.motorSpeed = CarSpeed;
-     //     ft.motor = TempFront;
-     //
-     //     JointMotor2D TempBack = bt.motor; /// this 3-lines used for Back wheel motor run;;;
-     //     TempBack.motorSpeed = CarSpeed;
-     //     bt.motor = TempBack;
-     // }
-     // else if (GameModeAccess == "HARD")
-     // {
-     //     CarSpeed = 1000f;
-     //     JointMotor2D TempFront = ft.motor; /// this 3lines used for fornt wheel motor run;;;       
-     //     TempFront.motorSpeed = CarSpeed;
-     //     ft.motor = TempFront;
-     //
-     //     JointMotor2D TempBack = bt.motor; /// this 3-lines used for Back wheel motor run;;;
-     //     TempBack.motorSpeed = CarSpeed;
-     //     bt.motor = TempBack;
-     // }
-     // else if (GameModeAccess == "EXTREME HARD")
-     // {
-     //     CarSpeed = 1200f;
-     //     JointMotor2D TempFront = ft.motor; /// this 3lines used for fornt wheel motor run;;;       
-     //     TempFront.motorSpeed = CarSpeed;
-     //     ft.motor = TempFront;
-     //
-     //     JointMotor2D TempBack = bt.motor; /// this 3-lines used for Back wheel motor run;;;
-     //     TempBack.motorSpeed = CarSpeed;
-     //     bt.motor = TempBack;
-     // }
-
-
 
     }
    IEnumerator delayedAssign()
@@ -128,11 +82,7 @@ public class GameController : MonoBehaviour
             RotateLeft();
             //gamemanager.gameState = gamemanager.GameState.empty;
             //CameraController.isalive = false;
-        }
-
-        
-
-
+        }        
     }
     // Update is called once per frame
     void Update()
@@ -146,19 +96,12 @@ public class GameController : MonoBehaviour
             ft.useMotor = false;
             bt.useMotor = false;
             // bt.breakForce = 1000;
-
         }
     }
     void RotateLeft()
     {
-        Quaternion theRotation = transform.localRotation;
-        theRotation.z *= 360;
-        transform.localRotation = theRotation;
-        //GreenBttonController.isGameover = false;
+        Time.timeScale = 0;       
         GameModeAccess = "";
     }
-
-    
-
 }
 

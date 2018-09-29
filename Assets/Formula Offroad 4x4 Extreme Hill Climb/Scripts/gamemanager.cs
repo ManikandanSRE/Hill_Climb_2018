@@ -11,7 +11,10 @@ public class gamemanager : MonoBehaviour
     public static bool SoundIsOn = true;
     public static float MusicSoundRise = 1f;
     public static string GameModeAccessSettingUp;
+
     public static int carSpeed;
+   
+
     public static string[] EasyArray = new string[10];
     public static string[] NormalArray = new string[10];
     public static string[] HardArray = new string[10];

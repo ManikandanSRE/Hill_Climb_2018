@@ -11,10 +11,11 @@ using GoogleMobileAds.Api;
 public class GameOverScript : MonoBehaviour
 {
 
+    public GameObject forhideObj;
+
     public Text FinalScore;
     public Text BestScore;
     public Text GoldCoinBest;
-
     InterstitialAd interstitial;
 
     // Use this for initialization
@@ -27,6 +28,7 @@ public class GameOverScript : MonoBehaviour
       
         if (gamemanager.gameState == gamemanager.GameState.Gameover)
         {
+            forhideObj.gameObject.SetActive(false);
             
             FinalScore.text = "Score : " + ScoreBoardManager.Score;
             BestScore.text = "Best : " + ScoreBoardManager.highscore;

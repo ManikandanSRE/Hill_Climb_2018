@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using VoxelBusters;
 using VoxelBusters.NativePlugins;
 
 public class VoxelBustersManager : MonoBehaviour
 {
+
+    public Button RestartDisable;
 
     private bool isSharing = false;
 
@@ -35,6 +38,8 @@ public class VoxelBustersManager : MonoBehaviour
 
     IEnumerator CaptureScreenShoot()
     {
+        RestartDisable.gameObject.SetActive(false);
+
         yield return new WaitForEndOfFrame();
 
         Texture2D texture = ScreenCapture.CaptureScreenshotAsTexture();
@@ -42,11 +47,13 @@ public class VoxelBustersManager : MonoBehaviour
         ShareSheet(texture);
 
         Object.Destroy(texture);
-
+        
     }
 
     private void ShareSheet(Texture2D texture)
     {
+        RestartDisable.gameObject.SetActive(true);
+
         ShareSheet _shareSheet = new ShareSheet();
 
         _shareSheet.Text = "Hello world!!!";

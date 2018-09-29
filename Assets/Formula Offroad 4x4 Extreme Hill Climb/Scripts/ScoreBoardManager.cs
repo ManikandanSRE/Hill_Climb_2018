@@ -9,21 +9,26 @@ using UnityEngine.SceneManagement;
 
 
 public class ScoreBoardManager : MonoBehaviour
-{
-    
-
+{   
     public GameObject[] RGCoins;
 
     public GameObject InstatiatePlace;
+    int requiredPlate = 2;
 
     public static bool createCoin;
 
     public static int Score;
     public static int highscore;
-    public static int GoldGodown;      //total gold coins in shop 
 
+    public static int GoldGodown;      //total gold coins in shop 
     public static int GoldCoins;      //inside the game.... current gold coins counting...
 
+
+
+    public static int LevelsCounter;     //level counting numbers....
+    int MultiforScore =2;
+    public GameObject LevelsTextObj;
+    public GameObject NextLevelTextObj;
 
     public GameObject GoldCoinText;
     Text GoldCoinValue;
@@ -57,23 +62,26 @@ public class ScoreBoardManager : MonoBehaviour
         {
             highscore = PlayerPrefs.GetInt("HighScore_EXTREMEHARD", highscore);
         }
-     
+
         HighScorevalue = HighScoreText.GetComponent<Text>();
         HighScorevalue.text = "High Score : " + highscore.ToString();
         Score = 0;
         GoldCoins = 0;
+        LevelsCounter = 0;
 
     }
     // Use this for initialization
     void Start()
     {
         createCoin = true;
-        
+        LevelsTextObj.GetComponent<Text>().text = "";  //while start game text hidden inside the game.
+        NextLevelTextObj.GetComponent<Text>().text = ""; //while start game text hidden inside the game.
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (gamemanager.gameState == gamemanager.GameState.playing)
         {
             if (GameController.GameModeAccess == "EASY")
@@ -144,9 +152,6 @@ public class ScoreBoardManager : MonoBehaviour
 
             }
         }
-
-
-
     }
     public void GoldCoinAccess()
     {
@@ -156,7 +161,7 @@ public class ScoreBoardManager : MonoBehaviour
 
         GoldCoinText = GameObject.Find("GOLD COIN");
 
-        Debug.Log( GoldCoinText.name);
+        Debug.Log(GoldCoinText.name);
         GoldCoinValue = GoldCoinText.GetComponent<Text>();
 
 
@@ -170,6 +175,7 @@ public class ScoreBoardManager : MonoBehaviour
         {
             Score += 1;
             ScoreValues.text = "Score : " + Score;
+            LevelPopPup();
         }
 
         if (GameController.GameModeAccess == "EASY")
@@ -210,15 +216,31 @@ public class ScoreBoardManager : MonoBehaviour
 
     }
 
+    public void LevelPopPup()
+    {
+
+        LevelsTextObj = GameObject.Find("LEVELS");
+
+        if ((Score%2==0))
+        {                     
+            LevelsTextObj.gameObject.SetActive(true);            
+            LevelsCounter += 1;
+            LevelsTextObj.GetComponent<Text>().text = "Level: " + LevelsCounter + " completed";          
+        }
+    }
+
+
+   
+
 
     public void SetHighScore()
     {
-        
+
         ++gamemanager.ReloadValue;
 
         GoldGodown = GoldGodown + GoldCoins;
 
-        
+
         string[] ScoresArray;
         if (GameController.GameModeAccess == "EASY")
         {
@@ -316,6 +338,6 @@ public class ScoreBoardManager : MonoBehaviour
         }
     }
 }
- 
+
 
 

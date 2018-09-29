@@ -8,30 +8,21 @@ public class pasueButton : MonoBehaviour
 
     public GameObject camera;
     AudioSource audio;
-
-
-
     public bool Paused;
     public Button PlayorPauseButton;
     public Sprite pauseImage;
     public Sprite playImage;
 
-    
-    
-
     // Use this for initialization
     void Start()
     {
-
-
         audio =camera. GetComponent<AudioSource>();
         if (gamemanager.SoundIsOn)
         {
             audio.Play();
 
         }
-        Paused = false;
-        
+        Paused = false;       
     }
 
     // Update is called once per frame
@@ -41,7 +32,6 @@ public class pasueButton : MonoBehaviour
     }
     public void PausedController()
     {
-
         Paused = !Paused;
         if (Paused)
         {
@@ -53,11 +43,7 @@ public class pasueButton : MonoBehaviour
             if (gamemanager.SoundIsOn&& gamemanager.gameState== gamemanager.GameState.paused)
             {
                 audio.Pause();
-
             }
-
-
-
         }
         else if (!Paused)
         {
