@@ -7,7 +7,7 @@ using GoogleMobileAds.Api;
 public class ADMOB : MonoBehaviour
 {
     InterstitialAd interstitial;         //FullSize Admob
-    GameOverScript GSCript;
+    //GameOverScript GSCript;
     private RewardBasedVideoAd rewardBasedVideo;      //VideoAdmob
 
     public void Start()

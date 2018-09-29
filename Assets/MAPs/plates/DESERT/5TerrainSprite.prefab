@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 212105140799270046}
   - component: {fileID: 50403584813915686}
   - component: {fileID: 61293906047667204}
+  - component: {fileID: 114073216241494060}
   m_Layer: 0
   m_Name: BBR
   m_TagString: RedRing
@@ -444,6 +445,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.66, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &114073216241494060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980940392630532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b784b181ab487240b7917ae05a72e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114660613651554522
 MonoBehaviour:
   m_ObjectHideFlags: 1

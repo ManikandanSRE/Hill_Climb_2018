@@ -72,7 +72,7 @@ public class ShopForGoldCoin : MonoBehaviour
         GoldCoinAmount = PlayerPrefs.GetInt("Goldcoin_Godown");
         GoldGodownValueText.text = "Gold Coin : " + GoldCoinAmount;
 
-        SelectionPad.texture = ItemList[itemspot].texture;
+       // SelectionPad.texture = ItemList[itemspot].texture;
         simage.sprite = ItemList[itemspot];
         SelectionPadMaps.texture = MapsItemList[Mapsitemspot].texture;
 
