@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03810b44eb222414eb0c24b619def608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RestartDisable: {fileID: 114359097121175532}
 --- !u!114 &114047431025876798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -656,7 +655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3983431dab77fa4bb462219ee1867b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forhideObj: {fileID: 0}
   FinalScore: {fileID: 114161981529690064}
   BestScore: {fileID: 114649877260038194}
   GoldCoinBest: {fileID: 114233403826576302}

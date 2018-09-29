@@ -24,7 +24,8 @@ public class triggerdetection : MonoBehaviour
          if (col.gameObject.tag == gameObject.tag)
          {
              CollusionStatus = col.gameObject.tag;
-             TriggeredGameObject = col.gameObject;             
+             TriggeredGameObject = col.gameObject;
+             
          }
          else
          {
@@ -32,11 +33,14 @@ public class triggerdetection : MonoBehaviour
          }
      }
      if (col.gameObject.tag.Contains("GoldCoin"))
-     {       
+     {
+        
          if (col.gameObject.tag.Contains("Green") == gameObject.tag.Contains("Green")) //for goldcoins
-         {           
+         {
+            
              CollusionStatus = "GreenCoin";
-             TriggeredGameObject = col.gameObject;            
+             TriggeredGameObject = col.gameObject;
+            
          }
          else
          {
@@ -45,8 +49,11 @@ public class triggerdetection : MonoBehaviour
  
          if (col.gameObject.tag.Contains("Red") == gameObject.tag.Contains("Red"))     //for goldcoins
          {
+            
+ 
              CollusionStatus = "RedCoin";
-             TriggeredGameObject = col.gameObject;            
+             TriggeredGameObject = col.gameObject;
+            
          }
          else
          {

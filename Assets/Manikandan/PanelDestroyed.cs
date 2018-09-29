@@ -15,11 +15,17 @@ public class PanelDestroyed : MonoBehaviour
         EasyPanel.GetComponent<Button>().onClick.AddListener(Easydes);
         NormalPanel.GetComponent<Button>().onClick.AddListener(NormalDes);
         hardPanel.GetComponent<Button>().onClick.AddListener(HardDes);
-        ExtremePanel.GetComponent<Button>().onClick.AddListener(ExtremeDes);             
-   }
+        ExtremePanel.GetComponent<Button>().onClick.AddListener(ExtremeDes);
+
+
+        
+        
+    }
 
     public void clickToStartForPanel()
     {
+
+
         Debug.Log("testing playerpref" + PlayerPrefs.HasKey("EasyPanel_" + PlayerPrefs.GetInt("selectedMap")));
         Debug.Log("testing playerpref" + PlayerPrefs.HasKey("NormalPanel_" + PlayerPrefs.GetInt("selectedMap")));
         Debug.Log("testing playerpref" + PlayerPrefs.HasKey("HardPanel_" + PlayerPrefs.GetInt("selectedMap")));
