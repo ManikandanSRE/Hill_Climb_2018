@@ -4,20 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
-  m_Scenes: []
-=======
   m_Scenes:
   - enabled: 1
-    path: Assets/Manikandan/splashscreenHilClimb 1.unity
-    guid: 10fc9832facfeb347a0ed788eb68615d
-  - enabled: 0
-    path: Assets/Manikandan/MainMenu 1.unity
-    guid: 1df8d6ea336ffa04c99b25bd33a72c8e
+    path: Assets/Formula Offroad 4x4 Extreme Hill Climb/Scenes/splashscreenHilClimb.unity
+    guid: 894ef1fe82ee9494aaee0de3d674b558
   - enabled: 1
-    path: Assets/Manikandan/testUI.unity
-    guid: 081e4776e284fde418f548752fee4c14
+    path: Assets/mani007/MainMenu 1.unity
+    guid: 3bf0321846885de448252093bd8d1887
   - enabled: 1
-    path: Assets/Ragavendran/Formula Offroad 4x4 Extreme Hill Climb 1.unity
-    guid: 7f28a942052833543912119d36f14830
->>>>>>> cfba7f5a7f7d2ca6d67a0090052025c817ce6db7
+    path: Assets/mani007/Formula Offroad 4x4 Extreme Hill Climb 2.unity
+    guid: 483fe1acf046a164bbd8cd87583d4d65
