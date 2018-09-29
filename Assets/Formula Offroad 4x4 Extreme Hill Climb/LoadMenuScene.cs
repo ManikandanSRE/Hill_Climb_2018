@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadMenuScene : MonoBehaviour {
-    public void MenuToStartpanel(string ClickToHome)
+    public void MenuToStartpanel()
     {
-        Application.LoadLevel(ClickToHome);
+        SceneManager.LoadScene(1);
     }
 
     public void ReloadScene()
@@ -14,12 +14,4 @@ public class LoadMenuScene : MonoBehaviour {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
        
     }
-
-    
-
-   // public void Quit()
-   // {
-   //     Application.Quit();
-   //     Debug.Log("yes your exit now");
-   // }
 }

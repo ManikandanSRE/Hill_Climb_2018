@@ -1,27 +1,30 @@
-﻿using System;
-using System.Collections;
+﻿using GoogleMobileAds.Api;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour {
+public class MainMenuManager : MonoBehaviour
+{
+
     [Header("Terms and Conditions")]
     public GameObject termspanel;
 
+
+    [Header("Google AD")]
+    InterstitialAd interstitial;
+    private RewardBasedVideoAd rewardBasedVideo;
 
 
     [Header("Score")]
     public Text GoldCoinInMainPanel;
     public Text GoldCoinInCarShopPanel;
     public Text GoldCoinInMapShopPanel;
-
     public Text EasyHighScore;
     public Text NormalHighScore;
     public Text HardHighScore;
     public Text ExtremeHighScore;
-
-
 
 
     [Header("LeaderBoard")]
@@ -35,7 +38,6 @@ public class MainMenuManager : MonoBehaviour {
     public List<Text> Top10HighScores = new List<Text>();
 
 
-
     [Header("Sound Controls")]
     public bool SoundOn;
     public Button OnOffButton;
@@ -43,9 +45,7 @@ public class MainMenuManager : MonoBehaviour {
     public Sprite OffImage;
     public static bool SoundManager;
     AudioSource audioSource;
-    public Scrollbar MusicScroller;  
-    
-
+    public Scrollbar MusicScroller;
 
 
     [Header("Shop Attrributes")]
@@ -53,12 +53,9 @@ public class MainMenuManager : MonoBehaviour {
     public Image ChangepanaelImage;
 
 
-
-
     [Header("ModeSelectionPanel")]
     public Image ModeSelectionPanelVehicleImage;
     public Image ModeSelectionPanelMapImage;
-
 
 
     [Header("ColourPanel")]
@@ -68,7 +65,6 @@ public class MainMenuManager : MonoBehaviour {
     public RawImage ChangePanelRawImage;
     public Button changePanelSelectButton;
     private int changePanelCarCount;
-
 
 
     [Header("Main Panel")]
@@ -86,132 +82,62 @@ public class MainMenuManager : MonoBehaviour {
     public Button BuyButtonForMaps;
     public Button SelectButtonMaps;
     public int LastselectedCarNumber;
+
     //public RawImage SelectionPad;                                    
     public List<Sprite> ItemList = new List<Sprite>();
     public static int itemspot = 0;
-    public RawImage SelectionPadMaps;                                 
+    public RawImage SelectionPadMaps;
     public List<Sprite> MapsItemList = new List<Sprite>();
     private int Mapsitemspot = 0;
     List<int> tagNames = new List<int>();
 
 
-
-
-
     [Header("Panel Destroyer")]
-    public RectTransform EasyPanel;
+   // public RectTransform EasyPanel;
     public RectTransform NormalPanel;
     public RectTransform hardPanel;
     public RectTransform ExtremePanel;
 
-
-
     private void Awake()
     {
-        resetPlayerPrefs();
+        if (!PlayerPrefs.HasKey("GameSetted"))
+        {
+            resetPlayerPrefs();
+        }
     }
 
-    // Use this for initialization
-    void Start () {
-        //Update Gold Coin
+    void Start()
+    {
+        InitializeAD();
+
         UpdateGoldCoin();
-        ////PanelDestroyer
-        EasyPanel.GetComponent<Button>().onClick.AddListener(Easydes);
-        NormalPanel.GetComponent<Button>().onClick.AddListener(NormalDes);
-        hardPanel.GetComponent<Button>().onClick.AddListener(HardDes);
-        ExtremePanel.GetComponent<Button>().onClick.AddListener(ExtremeDes);
 
+        SetupPanelDestroyer();
 
+        SetupAudio();
 
-
-        audioSource = GetComponent<AudioSource>();          //sound
-
-        if (!gamemanager.SoundIsOn)
-        {
-            OnOffButton.image.sprite = OffImage;
-        }
-        else
-            OnOffButton.image.sprite = OnImage;
-
-
-        audioSource.volume = gamemanager.MusicSoundRise;   //music       
-        MusicScroller.value = gamemanager.MusicSoundRise;
-
-
-
-
-
-        ///////////////////////////shop
-        //////////////////////////
-        ModeSelectionPanelVehicleImage.sprite = ItemList[PlayerPrefs.GetInt("selectedCar")];
-        ModeSelectionPanelMapImage.sprite = MapsItemList[PlayerPrefs.GetInt("selectedMap")];
-        ModeSelectionPanelVehicleImage.preserveAspect = true;
-        ModeSelectionPanelMapImage.preserveAspect = true;
-
-        simage.preserveAspect = true;
-        ChangepanaelImage.preserveAspect = true;
-
-        itemspot = 0;
-        Mapsitemspot = 0;
-        GoldCoinAmount = PlayerPrefs.GetInt("Goldcoin_Godown");
-        GoldGodownValueText.text = "Gold Coin : " + GoldCoinAmount;
-
-       // SelectionPad.texture = ItemList[itemspot].texture;
-        simage.sprite = ItemList[itemspot];
-        SelectionPadMaps.texture = MapsItemList[Mapsitemspot].texture;
-
-        BuyButton.gameObject.SetActive(false);
-        if (itemspot == PlayerPrefs.GetInt("selectedCar"))
-        {
-            SelectButtonCar.gameObject.SetActive(false);
-        }
-        else
-        {
-            SelectButtonCar.gameObject.SetActive(true);
-        }
-        RawimageOfCarAmountText.text = "";
-
-
-        BuyButtonForMaps.gameObject.SetActive(false);
-        if (Mapsitemspot == PlayerPrefs.GetInt("selectedMap"))
-        {
-            SelectButtonMaps.gameObject.SetActive(false);
-        }
-        else
-        {
-            SelectButtonMaps.gameObject.SetActive(true);
-        }
-        RawimageOfMapsAmountText.text = "";
+        SetupShop();
+      
+        SettingScores();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        EasyHighScoreText.text = PlayerPrefs.GetInt("HighScore_EASY").ToString();
-        NormalHighScoreText.text = PlayerPrefs.GetInt("HighScore_NORMAL").ToString();
-        HardHighScoreText.text = PlayerPrefs.GetInt("HighScore_HARD").ToString();
-        ExtremeHighScoreText.text = PlayerPrefs.GetInt("HighScore_EXTREMEHARD").ToString();
 
+    // Update is called once per frame
+    void Update()
+    {
        
+       
+    }
+
+    public void SettingScores()
+    {
         EasyHighScore.text = "HighScore \n " + PlayerPrefs.GetInt("HighScore_EASY");
         NormalHighScore.text = "HighScore\n " + PlayerPrefs.GetInt("HighScore_NORMAL");
         HardHighScore.text = "HighScore \n " + PlayerPrefs.GetInt("HighScore_HARD");
         ExtremeHighScore.text = "HighScore \n " + PlayerPrefs.GetInt("HighScore_EXTREMEHARD");
-
-
-
-
-
-        /////Shop////
-        //////////////
-        CarInShop();
-        MapInShop();
     }
+
     public void resetPlayerPrefs()
     {
-
-
-
-
         if (!PlayerPrefs.HasKey("EasyHighScores") && !PlayerPrefs.HasKey("NormalHighScores") && !PlayerPrefs.HasKey("HardHighScores") && !PlayerPrefs.HasKey("ExtremeHighScores"))
         {
             PlayerPrefs.SetString("EasyHighScores", "0,0,0,0,0,0,0,0,0,0");
@@ -219,9 +145,6 @@ public class MainMenuManager : MonoBehaviour {
             PlayerPrefs.SetString("HardHighScores", "0,0,0,0,0,0,0,0,0,0");
             PlayerPrefs.SetString("ExtremeHighScores", "0,0,0,0,0,0,0,0,0,0");
         }
-
-
-
         if (!PlayerPrefs.HasKey("Goldcoin_Godown"))                 //shopGold Reset       
         {
             PlayerPrefs.SetInt("Goldcoin_Godown", 1000);
@@ -254,7 +177,15 @@ public class MainMenuManager : MonoBehaviour {
             PlayerPrefs.SetInt("HighScore_EXTREMEHARD", 0);
         }
 
+        if (!PlayerPrefs.HasKey(ItemList[0].texture.name))
+        {
+            PlayerPrefs.SetInt(ItemList[0].texture.name, 1);
+        }
 
+        if (!PlayerPrefs.HasKey(MapsItemList[0].texture.name))
+        {
+            PlayerPrefs.SetInt(MapsItemList[0].texture.name, 1);
+        }
 
         if (!PlayerPrefs.HasKey("selectedCar"))
         {
@@ -265,6 +196,9 @@ public class MainMenuManager : MonoBehaviour {
         {
             PlayerPrefs.SetInt("selectedMap", 0);
         }
+
+
+        PlayerPrefs.SetInt("GameSetted", 0);
     }
 
     public void GetHighScoreValues(string LevelName)
@@ -274,9 +208,6 @@ public class MainMenuManager : MonoBehaviour {
         {
             case "Easy":
                 gamemanager.EasyArray = PlayerPrefs.GetString("EasyHighScores").Split(',');
-
-
-
                 for (int i = 0; i < gamemanager.EasyArray.Length; i++)
                 {
                     Top10HighScores[i].text = gamemanager.EasyArray[i];
@@ -314,67 +245,51 @@ public class MainMenuManager : MonoBehaviour {
         }
     }
 
-
-    public void AcceptPressed()
+    #region Shop
+    void SetupShop()
     {
-        PlayerPrefs.SetInt("termspanel", 1);
-        termspanel.SetActive(false);
-    }
-    public void DeclinePressed()
-    {
-        Application.Quit();
-    }
+        ModeSelectionPanelVehicleImage.sprite = ItemList[PlayerPrefs.GetInt("selectedCar")];
+        ModeSelectionPanelMapImage.sprite = MapsItemList[PlayerPrefs.GetInt("selectedMap")];
+        ModeSelectionPanelVehicleImage.preserveAspect = true;
+        ModeSelectionPanelMapImage.preserveAspect = true;
 
+        simage.preserveAspect = true;
+        ChangepanaelImage.preserveAspect = true;
 
-    public void Quit()
-    {
-        Application.Quit();
-        Debug.Log("yes your exit now");
-    }
+        itemspot = 0;
+        Mapsitemspot = 0;
+        GoldCoinAmount = PlayerPrefs.GetInt("Goldcoin_Godown");
+        GoldGodownValueText.text = "Gold Coin : " + GoldCoinAmount;
 
+        simage.sprite = ItemList[itemspot];
+        SelectionPadMaps.texture = MapsItemList[Mapsitemspot].texture;
 
-    public void UrlOpener(string url)
-    {
-        Application.OpenURL(url);
-    }
-
-
-
-
-    ///////Shop/////
-    ////////////
-    public void CarInShop()
-    {
-        PlayerPrefs.SetInt("CarShop", 0);
-        RawimageOfCar = PlayerPrefs.GetInt("CarShop");
-
-        if (PlayerPrefs.GetInt("Goldcoin_Godown") >= 5 && RawimageOfCar == 0)
+        BuyButton.gameObject.SetActive(false);
+        if (itemspot == PlayerPrefs.GetInt("selectedCar"))
         {
-
-            BuyButton.interactable = true;
+            SelectButtonCar.gameObject.SetActive(false);
         }
         else
         {
-            BuyButton.interactable = false;
+            SelectButtonCar.gameObject.SetActive(true);
         }
+        RawimageOfCarAmountText.text = "";
 
-    }
 
-    public void MapInShop()
-    {
-
-        PlayerPrefs.SetInt("MapShop", 0);
-        RawimageOfCar = PlayerPrefs.GetInt("MapShop");
-
-        if (PlayerPrefs.GetInt("Goldcoin_Godown") >= 3 && RawimageOfMap == 0)
+        BuyButtonForMaps.gameObject.SetActive(false);
+        if (Mapsitemspot == PlayerPrefs.GetInt("selectedMap"))
         {
-            BuyButtonForMaps.interactable = true;
+            SelectButtonMaps.gameObject.SetActive(false);
         }
         else
         {
-            BuyButtonForMaps.interactable = false;
+            SelectButtonMaps.gameObject.SetActive(true);
         }
+        RawimageOfMapsAmountText.text = "";
     }
+
+
+   
 
     public void BuyCar()
     {
@@ -623,12 +538,15 @@ public class MainMenuManager : MonoBehaviour {
         }
         PlayerPrefs.Save();
     }
-    
+
+
+
     public void GoldPurchase()
     {
         PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + Convert.ToInt32(TypeGoldAmount.text));
         Start();
     }
+    
 
     public void changePanelLeftButtonClick()
     {
@@ -682,48 +600,31 @@ public class MainMenuManager : MonoBehaviour {
         changePanelSelectButton.gameObject.SetActive(false);
     }
 
-
-
-
-    ////GameModeAccess
-    ///
-
-
-
-    public void SelectedLevel(int carspeed)
-
-    {
-
-        gamemanager.carSpeed = carspeed;
-
-    }
-
-    public void SelectedLevelName(string mode)
-    {
-        gamemanager.GameModeAccessSettingUp = mode;
-        SceneManager.LoadSceneAsync(2);
-    }
-
-
+    #endregion
 
     //Panel Destroyer
+    #region Panel Methods
+    void SetupPanelDestroyer()
+    {
+       // EasyPanel.GetComponent<Button>().onClick.AddListener(Easydes);
+        NormalPanel.GetComponent<Button>().onClick.AddListener(NormalDes);
+        hardPanel.GetComponent<Button>().onClick.AddListener(HardDes);
+        ExtremePanel.GetComponent<Button>().onClick.AddListener(ExtremeDes);
+        clickToStartForPanel();
+    }
+
+
     public void clickToStartForPanel()
     {
-
-
-        Debug.Log("testing playerpref" + PlayerPrefs.HasKey("EasyPanel_" + PlayerPrefs.GetInt("selectedMap")));
-        Debug.Log("testing playerpref" + PlayerPrefs.HasKey("NormalPanel_" + PlayerPrefs.GetInt("selectedMap")));
-        Debug.Log("testing playerpref" + PlayerPrefs.HasKey("HardPanel_" + PlayerPrefs.GetInt("selectedMap")));
-        Debug.Log("testing playerpref" + PlayerPrefs.HasKey("ExtremePanel_" + PlayerPrefs.GetInt("selectedMap")));
-
-        if (PlayerPrefs.HasKey("EasyPanel_" + PlayerPrefs.GetInt("selectedMap")))
-        {
-            EasyPanel.gameObject.SetActive(false);
-        }
-        else
-        {
-            EasyPanel.gameObject.SetActive(true);
-        }
+       // if (PlayerPrefs.HasKey("EasyPanel_" + PlayerPrefs.GetInt("selectedMap")))
+       // {
+       //     EasyPanel.gameObject.SetActive(false);
+       // }
+       //
+       // else
+       // {
+       //     EasyPanel.gameObject.SetActive(true);
+       // }
         if (PlayerPrefs.HasKey("NormalPanel_" + PlayerPrefs.GetInt("selectedMap")))
         {
             NormalPanel.gameObject.SetActive(false);
@@ -744,6 +645,7 @@ public class MainMenuManager : MonoBehaviour {
         {
             ExtremePanel.gameObject.SetActive(false);
         }
+
         else
         {
             ExtremePanel.gameObject.SetActive(true);
@@ -752,18 +654,24 @@ public class MainMenuManager : MonoBehaviour {
 
 
 
-    public void Easydes()
-    {
-        Debug.Log(ShopForGoldCoin.GoldCoinAmount);
-        if (GoldCoinAmount >= 50)
-        {
-            EasyPanel.gameObject.SetActive(false);
-            PlayerPrefs.SetInt("EasyPanel_" + PlayerPrefs.GetInt("selectedMap"), 1);
-            GoldCoinAmount -= 50;
-            PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
-        }
-        else EasyPanel.gameObject.SetActive(true);
-    }
+   //public void Easydes()
+   //{
+   //    Debug.Log(ShopForGoldCoin.GoldCoinAmount);
+   //    if (GoldCoinAmount >= 50)
+   //    {
+   //        EasyPanel.gameObject.SetActive(false);
+   //        PlayerPrefs.SetInt("EasyPanel_" + PlayerPrefs.GetInt("selectedMap"), 1);
+   //        GoldCoinAmount -= 50;
+   //        PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
+   //
+   //    }
+   //    else
+   //    {
+   //        EasyPanel.gameObject.SetActive(true);
+   //    }
+   //
+   //    UpdateGoldCoin();
+   //}
 
     public void NormalDes()
     {
@@ -774,7 +682,12 @@ public class MainMenuManager : MonoBehaviour {
             GoldCoinAmount -= 100;
             PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
         }
-        else NormalPanel.gameObject.SetActive(true);
+        else
+        {
+            NormalPanel.gameObject.SetActive(true);
+        }
+
+        UpdateGoldCoin();
     }
 
     public void HardDes()
@@ -786,7 +699,12 @@ public class MainMenuManager : MonoBehaviour {
             GoldCoinAmount -= 150;
             PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
         }
-        else hardPanel.gameObject.SetActive(true);
+        else
+        {
+            hardPanel.gameObject.SetActive(true);
+        }
+
+        UpdateGoldCoin();
     }
 
     public void ExtremeDes()
@@ -798,7 +716,12 @@ public class MainMenuManager : MonoBehaviour {
             GoldCoinAmount -= 200;
             PlayerPrefs.SetInt("Goldcoin_Godown", GoldCoinAmount);
         }
-        else ExtremePanel.gameObject.SetActive(true);
+        else
+        {
+            ExtremePanel.gameObject.SetActive(true);
+        }
+
+        UpdateGoldCoin();
     }
 
     public void resetprefs()
@@ -806,12 +729,151 @@ public class MainMenuManager : MonoBehaviour {
         PlayerPrefs.DeleteAll();
     }
 
+    #endregion
+    #region Google AD
 
-    //Update GoldCOin
+    //Intialise ADMob
+    void InitializeAD()
+    {
+#if UNITY_ANDROID
+        string appId = "ca-app-pub-3940256099942544~3347511713";
+#elif UNITY_IPHONE
+            string appId = "ca-app-pub-3940256099942544~1458002511";
+#else
+            string appId = "unexpected_platform";
+#endif
+
+        // Initialize the Google Mobile Ads SDK.
+        MobileAds.Initialize(appId);
+
+        // Get singleton reward based video ad reference.
+        this.rewardBasedVideo = RewardBasedVideoAd.Instance;
+        
+        //double up the goldcoins
+        rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded;
+        this.RequestRewardBasedVideo();  //videdo Admob
+
+
+
+    }
+    private void RequestRewardBasedVideo()
+    {
+#if UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
+            string adUnitId = "ca-app-pub-3940256099942544/1712485313";
+#else
+            string adUnitId = "unexpected_platform";
+#endif
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the rewarded video ad with the request.
+        this.rewardBasedVideo.LoadAd(request, adUnitId);
+    }
+    public void HandleRewardBasedVideoRewarded(object sender, Reward args)
+    {
+
+        ScoreBoardManager.GoldCoins = ScoreBoardManager.GoldCoins * 2;
+        PlayerPrefs.SetInt("Goldcoin_Godown", PlayerPrefs.GetInt("Goldcoin_Godown") + ScoreBoardManager.GoldCoins);
+        ScoreBoardManager.GoldCoins = 0;
+    }
+
+    public void GoldCoinVideoADMOB()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardBasedVideo.Show();
+        }
+    }
+    #endregion
+    #region Audio Methods
+    void SetupAudio()
+    {
+        OnOffButton.image.preserveAspect = true;
+        audioSource = GetComponent<AudioSource>();          //sound
+
+        if (!gamemanager.SoundIsOn)
+        {
+            OnOffButton.image.sprite = OffImage;
+        }
+        else
+        {
+            OnOffButton.image.sprite = OnImage;
+        }
+
+        audioSource.volume = gamemanager.MusicSoundRise;   //music       
+        MusicScroller.value = gamemanager.MusicSoundRise;
+
+    }
+    public void SoundOnOffController()
+    {
+        gamemanager.SoundIsOn = !gamemanager.SoundIsOn;
+        if (!gamemanager.SoundIsOn)
+        {
+            OnOffButton.image.sprite = OffImage;
+            PlayerPrefs.SetInt("SoundSet", 0);
+            gamemanager.SoundIsOn = false;
+        }
+        if (gamemanager.SoundIsOn)
+        {
+            OnOffButton.image.sprite = OnImage;
+            PlayerPrefs.SetInt("SoundSet", 1);
+            gamemanager.SoundIsOn = true;
+        }
+    }
+
+    public void OnMusicValueChanged()
+    {
+
+        PlayerPrefs.SetFloat("MusicSet", MusicScroller.value);
+        gamemanager.MusicSoundRise = MusicScroller.value;
+        audioSource.volume = gamemanager.MusicSoundRise;
+    }
+    #endregion
+
     public void UpdateGoldCoin()
     {
         GoldCoinInMainPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
         GoldCoinInCarShopPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
         GoldCoinInMapShopPanel.text = "Gold Coin : " + PlayerPrefs.GetInt("Goldcoin_Godown");
     }
+   
+    public void SelectedLevel(int carspeed)
+
+    {
+
+        gamemanager.carSpeed = carspeed;
+
+    }
+
+    public void SelectedLevelName(string mode)
+    {
+        gamemanager.GameModeAccessSettingUp = mode;
+        SceneManager.LoadSceneAsync(2);
+    }
+
+    public void UrlOpener(string url)
+    {
+        Application.OpenURL(url);
+    }
+
+    public void AcceptPressed()
+    {
+        PlayerPrefs.SetInt("termspanel", 1);
+        termspanel.SetActive(false);
+    }
+
+    public void DeclinePressed()
+    {
+        Application.Quit();
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("yes your exit now");
+    }
+
+
+
 }
