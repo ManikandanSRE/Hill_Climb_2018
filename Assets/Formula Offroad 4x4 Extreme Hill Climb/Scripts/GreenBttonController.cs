@@ -84,9 +84,6 @@ public class GreenBttonController : MonoBehaviour
                 FrontTyre.tag = temp2Tag;
                 BackTyre.tag = temp1Tag;
 
-
-
-
             }
         }
         else if (triggerdetection.CollusionStatus == "GreenCoin" || triggerdetection.CollusionStatus == "RedCoin")

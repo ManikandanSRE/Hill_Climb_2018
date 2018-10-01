@@ -9,8 +9,9 @@ EditorBuildSettings:
     path: Assets/Formula Offroad 4x4 Extreme Hill Climb/Scenes/splashscreenHilClimb.unity
     guid: 894ef1fe82ee9494aaee0de3d674b558
   - enabled: 1
-    path: Assets/mani007/MainMenu 1.unity
-    guid: 3bf0321846885de448252093bd8d1887
+    path: Assets/Formula Offroad 4x4 Extreme Hill Climb/Scenes/MainMenu 2.unity
+    guid: 8710af0c82cbb044f80f6f32d5fb5cc1
   - enabled: 1
-    path: Assets/mani007/Formula Offroad 4x4 Extreme Hill Climb 2.unity
-    guid: 483fe1acf046a164bbd8cd87583d4d65
+    path: Assets/Formula Offroad 4x4 Extreme Hill Climb/Scenes/Formula Offroad 4x4
+      Extreme Hill Climb 3.unity
+    guid: c91a402cde303f34dbb480cad28b29be

@@ -75,7 +75,7 @@ public class ScoreBoardManager : MonoBehaviour
     {
         createCoin = true;
         LevelsTextObj.GetComponent<Text>().text = "";  //while start game text hidden inside the game.
-        NextLevelTextObj.GetComponent<Text>().text = ""; //while start game text hidden inside the game.
+
     }
 
     // Update is called once per frame

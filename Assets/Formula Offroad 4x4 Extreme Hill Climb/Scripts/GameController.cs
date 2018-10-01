@@ -34,12 +34,10 @@ public class GameController : MonoBehaviour
         GameModeAccess = gamemanager.GameModeAccessSettingUp;
     }
     // Use this for initialization
-    void Start()
+   void Start()
     {
         
-
         Debug.Log(GameModeAccess);
-
         FrontWheel = GameObject.Find("FrontWheel");
         BackWheel = GameObject.Find("BackWheel");
         carbodycollider = gameObject.GetComponent<Collider2D>();
@@ -87,16 +85,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale != 0)
-        {
-            CarEngine();
-        }
-        else
-        {
-            ft.useMotor = false;
-            bt.useMotor = false;
-            // bt.breakForce = 1000;
-        }
+        CarEngine();
     }
     void RotateLeft()
     {
