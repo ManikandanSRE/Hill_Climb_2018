@@ -4,6 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
   m_Scenes:
   - enabled: 1
     path: Assets/Formula Offroad 4x4 Extreme Hill Climb/Scenes/splashscreenHilClimb.unity
@@ -15,3 +16,6 @@ EditorBuildSettings:
     path: Assets/Formula Offroad 4x4 Extreme Hill Climb/Scenes/Formula Offroad 4x4
       Extreme Hill Climb 3.unity
     guid: c91a402cde303f34dbb480cad28b29be
+=======
+  m_Scenes: []
+>>>>>>> a8eb7c22f0ac769ec4178419d3988669f1a96a09

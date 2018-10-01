@@ -28,7 +28,7 @@ public class ScoreBoardManager : MonoBehaviour
     public static int LevelsCounter;     //level counting numbers....
     int MultiforScore =2;
     public GameObject LevelsTextObj;
-    public GameObject NextLevelTextObj;
+    //public GameObject NextLevelTextObj;
 
     public GameObject GoldCoinText;
     Text GoldCoinValue;
@@ -75,7 +75,11 @@ public class ScoreBoardManager : MonoBehaviour
     {
         createCoin = true;
         LevelsTextObj.GetComponent<Text>().text = "";  //while start game text hidden inside the game.
+<<<<<<< HEAD
 
+=======
+        //NextLevelTextObj.GetComponent<Text>().text = ""; //while start game text hidden inside the game.
+>>>>>>> a8eb7c22f0ac769ec4178419d3988669f1a96a09
     }
 
     // Update is called once per frame

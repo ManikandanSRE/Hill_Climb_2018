@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
-{   
+{
+
+
 
     [Header("Background")]
     public Image BackroundImageLoader;
@@ -31,7 +33,6 @@ public class CameraController : MonoBehaviour
 
         GameOverPanel = GameObject.Find("GameOverPanel");
         GameOverPanel.SetActive(false);
-     
         gamemanager.CurrentCar = CarPrefabs[PlayerPrefs.GetInt("selectedCar")];
         GameObject NewCar = Instantiate(gamemanager.CurrentCar, trans.position, trans.rotation, player.transform) as GameObject;
 
